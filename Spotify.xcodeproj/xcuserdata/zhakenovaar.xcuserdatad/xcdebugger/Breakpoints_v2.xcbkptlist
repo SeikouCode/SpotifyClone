@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "1DB59060-35E8-42DF-BECD-8E993D2E4A50"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FA48742-2196-499E-9EC3-E9E48A8DB83B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "titleLabel"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "9FA48742-2196-499E-9EC3-E9E48A8DB83B - 562c1400bab124b4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UILabel in variable initialization expression of Spotify.RecommendedMusicTableViewCell.titleLabel : __C.UILabel"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "9FA48742-2196-499E-9EC3-E9E48A8DB83B - c2eadd17eb352579"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.titleLabel.getter : __C.UILabel"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "9FA48742-2196-499E-9EC3-E9E48A8DB83B - b0d4706be7948427"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.titleLabel.setter : __C.UILabel"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "9FA48742-2196-499E-9EC3-E9E48A8DB83B - f19e045494a05536"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.titleLabel.modify : __C.UILabel"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "9FA48742-2196-499E-9EC3-E9E48A8DB83B - eba54e062661ff8f"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.titleLabel.modify : __C.UILabel with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  uuid = "9FA48742-2196-499E-9EC3-E9E48A8DB83B - 9d89b31fb9447e29"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Spotify.RecommendedMusicTableViewCell"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "230">
+               </Location>
+               <Location
+                  uuid = "9FA48742-2196-499E-9EC3-E9E48A8DB83B - 70ab7b448359af6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Spotify.RecommendedMusicTableViewCell&gt;"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "169">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BFA79634-EFDC-4F37-84F1-5A2EA720D910"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "RecommendedMusicTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "BFA79634-EFDC-4F37-84F1-5A2EA720D910 - 562c1400bab124b4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UILabel in variable initialization expression of Spotify.RecommendedMusicTableViewCell.titleLabel : __C.UILabel"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "BFA79634-EFDC-4F37-84F1-5A2EA720D910 - c2eadd17eb352579"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.titleLabel.getter : __C.UILabel"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "BFA79634-EFDC-4F37-84F1-5A2EA720D910 - b0d4706be7948427"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.titleLabel.setter : __C.UILabel"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "BFA79634-EFDC-4F37-84F1-5A2EA720D910 - f19e045494a05536"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.titleLabel.modify : __C.UILabel"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/Spotify/MainPage/ViewController/RecommendedMusicTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "BFA79634-EFDC-4F37-84F1-5A2EA720D910 - eba54e062661ff8f"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.RecommendedMusicTableViewCell.titleLabel.modify : __C.UILabel with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/spotify/Spotify/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
