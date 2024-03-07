@@ -141,13 +141,13 @@ final class AuthManager {
         }
     }
     
-    public func refreshAccessToken(completion: @escaping (Bool) -> Void) {
+    public func refreshAccessToken(completion: ((Bool) -> Void)? = nil) {
         guard !refreshingToken else {
             return
         }
         
         guard shouldRefreshToken else {
-            completion(true)
+            completion?(true)
             return
         }
         refreshingToken = true
@@ -164,14 +164,14 @@ final class AuthManager {
                     self?.cacheToken(result: result)
                     self?.onRefreshBlocks.forEach { $0(result.accessToken) }
                     self?.onRefreshBlocks.removeAll()
-                    completion(true)
+                    completion?(true)
                 } catch {
                     print(error.localizedDescription)
-                    completion(false)
+                    completion?(false)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                completion(false)
+                completion?(false)
             }
         }
     }

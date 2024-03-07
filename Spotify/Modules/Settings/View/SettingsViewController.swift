@@ -111,7 +111,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         let model = sections[indexPath.section].rows[indexPath.row]
         cell.textLabel?.text = model.title
-        cell.backgroundColor = .white
+        cell.backgroundColor = .gray
         cell.textLabel?.textColor = .black
         cell.selectionStyle = .none
         return cell
@@ -125,5 +125,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let modelTitle = sections[section].title
         return modelTitle
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView else { return }
+        
+        if section == 0 {
+            headerView.textLabel?.textColor = .white
+        } else if section == 1 {
+            headerView.textLabel?.textColor = .white
+        }
     }
 }

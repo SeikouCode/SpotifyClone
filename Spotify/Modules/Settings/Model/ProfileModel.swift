@@ -17,8 +17,8 @@ struct ProfileModel: Codable {
     let images: [Image]
     let type, uri: String
     let followers: Followers
-    let country: String?
-    let product: String?
+    let country: String
+    let product: String
     let explicitContent: ExplicitContent?
 
     enum CodingKeys: String, CodingKey {

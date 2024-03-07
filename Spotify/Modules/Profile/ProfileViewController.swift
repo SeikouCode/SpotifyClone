@@ -23,35 +23,35 @@ class ProfileViewController: UIViewController {
     private var displayNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "PlayfairDisplay-Regular", size: 14)
         return label
     }()
     
     private var idLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "PlayfairDisplay-Regular", size: 14)
         return label
     }()
     
     private var emailLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "PlayfairDisplay-Regular", size: 14)
         return label
     }()
     
     private var countryLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "PlayfairDisplay-Regular", size: 14)
         return label
     }()
     
     private var productLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "PlayfairDisplay-Regular", size: 14)
         return label
     }()
     
