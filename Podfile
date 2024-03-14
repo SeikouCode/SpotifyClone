@@ -11,6 +11,8 @@ pod 'SnapKit', '~> 5.0.0'
 pod 'Moya', '~> 15.0'
 pod 'Alamofire'
 pod 'KeychainSwift'
+pod 'SkeletonView'
+pod 'Kingfisher'
 
 
   post_install do |installer|

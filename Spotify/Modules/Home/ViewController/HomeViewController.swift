@@ -36,6 +36,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupViews()
         setupViewModel()
+        setupNavigationBar()
     }
     
     // MARK: - Private Methods
@@ -59,9 +60,19 @@ class HomeViewController: BaseViewController {
         })
     }
     
+    public override func setupNavigationBar() {
+        super.setupNavigationBar()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "gear"),
+            style: .done,
+            target: self,
+            action: #selector(didTapSettings)
+        )
+    }
+    
     // MARK: - Actions
-        
-    override func didTapSettings() {
+    
+    @objc private func didTapSettings() {
         let controller = SettingsViewController()
         controller.title = "Settings"
         controller.navigationItem.setBackBarItem()
@@ -72,17 +83,17 @@ class HomeViewController: BaseViewController {
     }
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
-
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.numberOfCells ?? 1
-    }
+    // MARK: - UITableViewDelegate, UITableViewDataSource
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedMusicTableViewCell", for: indexPath) as! RecommendedMusicTableViewCell
-        let data = viewModel?.getCellViewModel(at: indexPath)
-        cell.configure(data: data)
-        return cell
+    extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            viewModel?.numberOfCells ?? 1
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedMusicTableViewCell", for: indexPath) as! RecommendedMusicTableViewCell
+            let data = viewModel?.getCellViewModel(at: indexPath)
+            cell.configure(data: data)
+            return cell
+        }
     }
-}

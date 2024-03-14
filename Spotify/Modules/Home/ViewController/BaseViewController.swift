@@ -31,18 +31,5 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         navigationController?.navigationBar.compactAppearance = navigationBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "gear"),
-            style: .done,
-            target: self,
-            action: #selector(didTapSettings)
-        )
-    }
-    
-    // MARK: - Actions
-    
-    @objc open func didTapSettings() {
     }
 }
-

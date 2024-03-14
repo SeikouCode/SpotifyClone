@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ProfileViewController: UIViewController {
 
@@ -71,14 +72,13 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        ProfileManager.shared.getCurrentUserProfile { profile in
+        ProfileManager.shared.getCurrentUserProfile { [weak self] profile in
             DispatchQueue.main.async {
-                self.updateUI(with: profile)
+                self?.updateUI(with: profile)
             }
         }
         setupViews()
     }
-    
     
     // MARK: - Private methods
     
@@ -142,19 +142,16 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateUI(with profile: ProfileModel) {
-        displayNameLabel.text = "Full Name: \(profile.displayName)"
-        idLabel.text = "User ID: \(profile.id)"
-        countryLabel.text = "Country: \(profile.country)"
-        emailLabel.text = "Email: \(profile.email)"
-        productLabel.text = "Plan: \(profile.product)"
-        if let imageURL = URL(string: profile.images.first?.url ?? "") {
-            DispatchQueue.global().async {
-                if let imageData = try? Data(contentsOf: imageURL) {
-                    DispatchQueue.main.async {
-                        self.profileImageView.image = UIImage(data: imageData)
-                    }
-                }
-            }
+        displayNameLabel.text = profile.displayName.map { "Full Name: \($0)" }
+        idLabel.text = profile.id.map { "User ID: \($0)" }
+        emailLabel.text = profile.email.map { "Email Address: \($0)" }
+        countryLabel.text = profile.country.map { "Country: \($0)" }
+        productLabel.text = profile.product.map { "Product: \($0)" }
+
+        if let imageURLString = profile.images.first?.url, let imageURL = URL(string: imageURLString) {
+            profileImageView.kf.setImage(with: imageURL, placeholder: UIImage(named: "default_profile_image"))
+        } else {
+            profileImageView.image = UIImage(named: "default_profile_image")
         }
     }
 }
