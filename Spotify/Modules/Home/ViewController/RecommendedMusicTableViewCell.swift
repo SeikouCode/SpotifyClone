@@ -38,7 +38,7 @@ class RecommendedMusicTableViewCell: UITableViewCell {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont(name: "PlayfairDisplay-Regular", size: 16)
         label.textColor = .white
         label.textAlignment = .left
         return label
@@ -46,7 +46,7 @@ class RecommendedMusicTableViewCell: UITableViewCell {
     
     private var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = UIFont(name: "PlayfairDisplay-Regular", size: 14)
         label.textAlignment = .left
         label.textColor = .white
         return label

@@ -9,16 +9,16 @@ import Foundation
 
 // MARK: - ProfileModel
 struct ProfileModel: Codable {
-    let displayName: String
+    let displayName: String?
     let externalUrls: ExternalUrls
-    let email: String
-    let href: String
-    let id: String
+    let email: String?
+    let href: String?
+    let id: String?
     let images: [Image]
-    let type, uri: String
+    let type, uri: String?
     let followers: Followers
-    let country: String
-    let product: String
+    let country: String?
+    let product: String?
     let explicitContent: ExplicitContent?
 
     enum CodingKeys: String, CodingKey {
@@ -42,44 +42,17 @@ struct ExplicitContent: Codable {
 
 // MARK: - ExternalUrls
 struct ExternalUrls: Codable {
-    let spotify: String
+    let spotify: String?
 }
 
 // MARK: - Followers
 struct Followers: Codable {
-    let href: JSONNull?
+    let href: String?
     let total: Int
 }
 
 // MARK: - Image
 struct Image: Codable {
-    let url: String
+    let url: String?
     let height, width: Int
-}
-
-// MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
-
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
-
-    public var hashValue: Int {
-        return 0
-    }
-
-    public init() {}
-
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
-    }
 }

@@ -35,6 +35,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupViews()
         setupViewModel()
+        setupNavigationBar()
         
         sections.append(.newRelesedAlbums(datamodel: [.init(), .init(), .init()]))
         sections.append(.featuredPlaylists(datamodel: [.init(), .init(), .init()]))
@@ -171,10 +172,19 @@ class HomeViewController: BaseViewController {
 //            self.recommendedTableView.reloadData()
 //        })
     }
+    public override func setupNavigationBar() {
+        super.setupNavigationBar()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "gear"),
+            style: .done,
+            target: self,
+            action: #selector(didTapSettings)
+        )
+    }
     
     // MARK: - Actions
-        
-    override func didTapSettings() {
+    
+    @objc private func didTapSettings() {
         let controller = SettingsViewController()
         controller.title = "Settings"
         controller.navigationItem.setBackBarItem()

@@ -81,10 +81,13 @@ class SettingsViewController: UIViewController {
             AuthManager.shared.signOut { success in
                 if success {
                     DispatchQueue.main.async {
+                        let welcomeViewController = WelcomeViewController()
+                        let navigationController = UINavigationController(rootViewController: welcomeViewController)
+                        navigationController.navigationBar.prefersLargeTitles = true
+                        navigationController.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
                         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                             if let window = windowScene.windows.first {
-                                let authViewController = AuthViewController()
-                                window.rootViewController = UINavigationController(rootViewController: authViewController)
+                                window.rootViewController = navigationController
                                 window.makeKeyAndVisible()
                             }
                         }
