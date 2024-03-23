@@ -13,12 +13,12 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
+        baseSetupNavigationBar()
     }
     
     // MARK: - Public Methods
     
-    func setupNavigationBar() {
+    func baseSetupNavigationBar() {
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.titleTextAttributes = [

@@ -60,8 +60,7 @@ class HomeViewController: BaseViewController {
         })
     }
     
-    public override func setupNavigationBar() {
-        super.setupNavigationBar()
+    private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "gear"),
             style: .done,
