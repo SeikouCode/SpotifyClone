@@ -41,33 +41,28 @@ class ProfileViewController: UIViewController {
         font: UIFont(name: "Lato-Regular", size: 14)
     )
     
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        return scrollView
-    }()
+    private var scrollView = UIScrollView()
     
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private var containerView = UIView()
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        setupViews()
+        
         ProfileManager.shared.getCurrentUserProfile { [weak self] profile in
             DispatchQueue.main.async {
                 self?.updateUI(with: profile)
             }
         }
-        setupViews()
     }
     
     // MARK: - Private methods
     
     private func setupViews() {
-        view.backgroundColor = .black
+        
         self.title = "Profile"
         
         view.addSubview(scrollView)

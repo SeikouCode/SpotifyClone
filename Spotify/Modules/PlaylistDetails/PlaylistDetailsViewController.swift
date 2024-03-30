@@ -10,6 +10,7 @@ import UIKit
 class PlaylistDetailsViewController: BaseViewController {
 
     var playlistId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()

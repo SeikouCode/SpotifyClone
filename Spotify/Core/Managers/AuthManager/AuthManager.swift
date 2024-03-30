@@ -181,9 +181,6 @@ final class AuthManager {
     public func signOut(completion: @escaping (Bool) -> Void) {
         authRepository.removeAllTokens()
         tokenExpirationDate = nil
-        refreshAccessToken { success in
-            completion(success)
-    }
 }
     
 // MARK: - Private Methods

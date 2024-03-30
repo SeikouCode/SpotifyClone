@@ -107,7 +107,7 @@ class RecommendedCollectionViewCell: UICollectionViewCell {
             make.left.equalTo(musicImage.snp.right).offset(12)
             make.top.bottom.equalTo(musicImage)
             make.height.greaterThanOrEqualTo(35)
-            make.width.greaterThanOrEqualTo(150)
+            make.width.lessThanOrEqualTo(250)
         }
         
         rightView.snp.makeConstraints { make in
