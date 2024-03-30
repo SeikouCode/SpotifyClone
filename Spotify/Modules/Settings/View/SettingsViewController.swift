@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsViewController: BaseViewController {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     private var sections = [Section]()
     private var currentLanguage: SupportedLanguages? {
@@ -19,7 +19,7 @@ class SettingsViewController: BaseViewController {
         }
     }
     
-    // MARK: UI Elements
+    // MARK: - UI Elements
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -30,7 +30,7 @@ class SettingsViewController: BaseViewController {
         return tableView
     }()
     
-    // MARK: Lifecycle Methods
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class SettingsViewController: BaseViewController {
         title = "Settings".localized
     }
     
-    // MARK: UI Setup
+    // MARK: - UI Setup
     
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -65,15 +65,17 @@ class SettingsViewController: BaseViewController {
         }
     }
     
-    // MARK: Data Setup
+    // MARK: - Data Setup
     
     private func setupData() {
+        sections.removeAll()
+        
         sections.append(
             .init(
                 title: "Profile".localized,
                 rows: [
                     .init(
-                        title: "View your profile".localized,
+                        title: "View_your_profile".localized,
                         handler: { [weak self] in
                             DispatchQueue.main.async {
                                 self?.showProfilePage()
@@ -88,7 +90,7 @@ class SettingsViewController: BaseViewController {
                 title: "Account".localized,
                 rows: [
                     .init(
-                        title: "Sign_Out".localized,
+                        title: "Sign_out".localized,
                         handler: { [weak self] in
                             DispatchQueue.main.async {
                                 self?.didTapSignOut()
@@ -97,9 +99,10 @@ class SettingsViewController: BaseViewController {
                 ]
             )
         )
+        tableView.reloadData()
     }
     
-    // MARK: Actions
+    // MARK: - Actions
     
     @objc
     private func didTapLanguage() {
@@ -120,16 +123,18 @@ class SettingsViewController: BaseViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    // MARK: Language Change
+    // MARK: - Language Change
     
     private func didChange(language: SupportedLanguages) {
         Bundle.setLanguage(language: language.rawValue)
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: NSNotification.Name("language"), object: nil)
+            self.tableView.reloadData()
+            self.setupData()
         }
     }
     
-    // MARK: Navigation
+    // MARK: - Navigation
     
     private func showProfilePage() {
         let controller = ProfileViewController()
@@ -138,9 +143,8 @@ class SettingsViewController: BaseViewController {
     }
     
     private func didTapSignOut() {
-        let alert = UIAlertController(title: "Sign Out", message: "Do you really want to sign out?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+        let alert = UIAlertController(title: "Sign_out".localized, message: "Do_you_really_want_to_sign_out?".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { _ in
             AuthManager.shared.signOut { success in
                 if success {
                     DispatchQueue.main.async {
@@ -160,6 +164,7 @@ class SettingsViewController: BaseViewController {
                 }
             }
         }))
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive))
         present(alert, animated: true)
     }
 }
@@ -178,7 +183,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         let model = sections[indexPath.section].rows[indexPath.row]
-        cell.textLabel?.text = model.title
+        cell.textLabel?.text = model.title.localized
         cell.backgroundColor = .gray
         cell.textLabel?.textColor = .black
         cell.selectionStyle = .none
@@ -192,7 +197,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let modelTitle = sections[section].title
-        return modelTitle
+        return modelTitle.localized
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -205,4 +210,3 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-

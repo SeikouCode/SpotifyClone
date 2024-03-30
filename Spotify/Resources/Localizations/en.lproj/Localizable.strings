@@ -16,7 +16,14 @@
 "Profile" = "Profile";
 "View_your_profile" = "View your profile";
 "Account" = "Account";
-"Sign_Out" = "Sign Out";
+"Sign_out" = "Sign out";
 "Cancel" = "Cancel";
 "Album_details" = "Album details";
 "Playlist_details" = "Playlist details";
+"Full_name" = "Full name";
+"Email_address" = "Email address";
+"Country" = "Country";
+"Product" = "Product";
+"User_Id" = "User Id";
+"Do_you_really_want_to_sign_out?" = "Do you really want to sign out?";
+"Yes" = "Yes";

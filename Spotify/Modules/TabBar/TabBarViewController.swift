@@ -34,7 +34,7 @@ class TabBarViewController: UITabBarController {
             tag: 1)
         
         libraryViewController.tabBarItem = UITabBarItem(
-            title: "Your library".localized,
+            title: "Your_library".localized,
             image: UIImage(named: "library"),
             tag: 1)
         

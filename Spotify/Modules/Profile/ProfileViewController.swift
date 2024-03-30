@@ -51,6 +51,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupViews()
+        updateUI()
         
         ProfileManager.shared.getCurrentUserProfile { [weak self] profile in
             DispatchQueue.main.async {
@@ -63,7 +64,7 @@ class ProfileViewController: UIViewController {
     
     private func setupViews() {
         
-        self.title = "Profile"
+        self.title = "Profile".localized
         
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
@@ -121,16 +122,39 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateUI(with profile: ProfileModel) {
-        displayNameLabel.text = profile.displayName.map { "Full Name: \($0)" }
-        idLabel.text = profile.id.map { "User ID: \($0)" }
-        emailLabel.text = profile.email.map { "Email Address: \($0)" }
-        countryLabel.text = profile.country.map { "Country: \($0)" }
-        productLabel.text = profile.product.map { "Product: \($0)" }
+        displayNameLabel.text = NSLocalizedString("Full_name", comment: "") + ": \(profile.displayName ?? "")"
+        idLabel.text = NSLocalizedString("User_Id", comment: "") + ": \(profile.id ?? "")"
+        emailLabel.text = NSLocalizedString("Email_address", comment: "") + ": \(profile.email ?? "")"
+        countryLabel.text = NSLocalizedString("Country", comment: "") + ": \(profile.country ?? "")"
+        productLabel.text = NSLocalizedString("Product", comment: "") + ": \(profile.product ?? "")"
 
         if let imageURLString = profile.images.first?.url, let imageURL = URL(string: imageURLString) {
             profileImageView.kf.setImage(with: imageURL, placeholder: UIImage(named: "default_profile_image"))
         } else {
             profileImageView.image = UIImage(named: "default_profile_image")
+        }
+    }
+    
+    // MARK: - Language Change
+    
+    private func didChange(language: SupportedLanguages) {
+        Bundle.setLanguage(language: language.rawValue)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name("language"), object: nil)
+            self.updateLocalization()
+        }
+    }
+
+    private func updateLocalization() {
+        self.title = "Profile".localized
+        self.updateUI()
+    }
+
+    private func updateUI() {
+        ProfileManager.shared.getCurrentUserProfile { [weak self] profile in
+            DispatchQueue.main.async {
+                self?.updateUI(with: profile)
+            }
         }
     }
 }
