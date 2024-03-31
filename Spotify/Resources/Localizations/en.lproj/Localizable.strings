@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  Spotify
+
+  Created by Aneli  on 25.03.2024.
+  
+*/
+
+"New_released_albums" = "New Released Albums";
+"Featured_playlists" = "Featured Playlists";
+"Recommended" = "Recommended";
+"Home" = "Home";
+"Search" = "Search";
+"Your_library" = "Your library";
+"Settings" = "Settings";
+"Profile" = "Profile";
+"View_your_profile" = "View your profile";
+"Account" = "Account";
+"Sign_out" = "Sign out";
+"Cancel" = "Cancel";
+"Album_details" = "Album details";
+"Playlist_details" = "Playlist details";
+"Full_name" = "Full name";
+"Email_address" = "Email address";
+"Country" = "Country";
+"Product" = "Product";
+"User_Id" = "User Id";
+"Do_you_really_want_to_sign_out?" = "Do you really want to sign out?";
+"Yes" = "Yes";

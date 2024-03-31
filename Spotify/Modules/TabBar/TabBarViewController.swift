@@ -24,17 +24,17 @@ class TabBarViewController: UITabBarController {
         let libraryViewController = UINavigationController(rootViewController: LibraryViewController())
         
         homeViewController.tabBarItem = UITabBarItem(
-            title: "Home",
+            title: "Home".localized,
             image: UIImage(systemName: "house"),
             tag: 1)
         
         searchViewController.tabBarItem = UITabBarItem(
-            title: "Search",
+            title: "Search".localized,
             image: UIImage(systemName: "magnifyingglass"),
             tag: 1)
         
         libraryViewController.tabBarItem = UITabBarItem(
-            title: "Your library",
+            title: "Your_library".localized,
             image: UIImage(named: "library"),
             tag: 1)
         
@@ -48,5 +48,11 @@ class TabBarViewController: UITabBarController {
         tabBar.tintColor = .white
         tabBar.barTintColor = .white
         tabBar.backgroundColor = .black
+        
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = .black
+        tabBar.standardAppearance = tabBarAppearance
+        tabBar.scrollEdgeAppearance = tabBarAppearance
     }
 }

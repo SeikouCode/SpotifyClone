@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         if AuthManager.shared.isSignedIn {
+            AuthManager.shared.refreshAccessToken()
             let tabBarViewController = TabBarViewController()
             window?.rootViewController = tabBarViewController
         } else {
@@ -26,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navigationController.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
             window?.rootViewController = navigationController
         }
-        
         window?.makeKeyAndVisible()
     }
 

@@ -9,7 +9,6 @@ import Foundation
 import Moya
 
 final class LoggerPlugin: PluginType {
-    
     func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
         switch result {
             case .success(let response):

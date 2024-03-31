@@ -21,7 +21,7 @@ enum NetworkLoggerPluginConfig {
     private static func JSONDataToStringFormatter(_ data: Data) -> String {
         do {
             let dataAsJson = try JSONSerialization.jsonObject(with: data)
-            let prettyData = try JSONSerialization.data(withJSONObject: dataAsJson, options: 
+            let prettyData = try JSONSerialization.data(withJSONObject: dataAsJson, options:
                     .prettyPrinted)
             return String(data: prettyData, encoding: .utf8) ?? ""
         }

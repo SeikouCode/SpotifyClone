@@ -61,6 +61,7 @@ class AuthViewController: UIViewController {
         view.addSubview(webView)
     }
 }
+// MARK: - WKNavigationDelegate
 
 extension AuthViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

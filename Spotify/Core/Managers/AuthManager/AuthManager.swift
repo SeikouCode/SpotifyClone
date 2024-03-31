@@ -10,7 +10,9 @@ import Moya
 import KeychainSwift
 
 final class AuthManager {
+    
     static let shared = AuthManager()
+    private var authRepository: AuthRepositoryProtocol = AuthRepository()
     
 // MARK: - Properties
     
@@ -21,6 +23,8 @@ final class AuthManager {
         ]
     )
     
+    private var refreshingToken = false
+    private var onRefreshBlocks = [(String) -> Void]()
     private let keychain = KeychainSwift()
     
 // MARK: - Computed Properties
@@ -52,26 +56,26 @@ final class AuthManager {
     
     private var accessToken: String? {
         get {
-            return keychain.get("accessToken")
+            return authRepository.getAccessToken()
         }
         set {
             if let newValue = newValue {
-                keychain.set(newValue, forKey: "accessToken")
+                authRepository.save(accessToken: newValue)
             } else {
-                keychain.delete("accessToken")
+                authRepository.removeAccessToken()
             }
         }
     }
     
     private var refreshToken: String? {
         get {
-            return keychain.get("refreshToken")
+            return authRepository.getRefreshToken()
         }
         set {
             if let newValue = newValue {
-                keychain.set(newValue, forKey: "refreshToken")
+                authRepository.save(refreshToken: newValue)
             } else {
-                keychain.delete("refreshToken")
+                authRepository.removeRefreshToken()
             }
         }
     }
@@ -121,36 +125,72 @@ final class AuthManager {
         }
     }
     
-// MARK: - Private Methods
-    
-    private func refreshAccessToken() {
+    public func withValidToken(completion: @escaping (String) -> Void) {
+        guard !refreshingToken else {
+            onRefreshBlocks.append(completion)
+            return
+        }
+        
         if shouldRefreshToken {
-            guard let refreshToken = refreshToken else { return }
-            
-            let baseURL = GlobalConstants.baseURL + "/api/token"
-            let parameters: [String: Any] = [
-                "grant_type": "refresh_token",
-                "refresh_token": refreshToken,
-                "client_id": GlobalConstants.AuthAPI.clientId
-            ]
-            provider.request(.refreshToken(parameters: parameters)) { [weak self] result in
-                switch result {
-                case .success(let response):
-                    guard let result = try? response.map(AuthResponse.self) else { return }
-                    self?.cacheToken(result: result)
-                    
-                case .failure(let error):
-                    print("Token refresh failed: \(error)")
+            refreshAccessToken { [weak self] success in
+                if success, let accessToken = self?.accessToken {
+                    completion(accessToken)
                 }
+            }
+        } else {
+            guard let accessToken else { return }
+            completion(accessToken)
+        }
+    }
+    
+    public func refreshAccessToken(completion: ((Bool) -> Void)? = nil) {
+        guard !refreshingToken else {
+            return
+        }
+        
+        guard shouldRefreshToken else {
+            completion?(true)
+            return
+        }
+        refreshingToken = true
+        
+        guard let refreshToken else { return }
+        provider.request(.refreshToken(token: refreshToken)) { [weak self] result in
+            self?.refreshingToken = false
+            
+            switch result {
+            case .success(let response):
+                do {
+                    let result = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                    print("Successfully refreshed")
+                    self?.cacheToken(result: result)
+                    self?.onRefreshBlocks.forEach { $0(result.accessToken) }
+                    self?.onRefreshBlocks.removeAll()
+                    completion?(true)
+                } catch {
+                    print(error.localizedDescription)
+                    completion?(false)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion?(false)
             }
         }
     }
     
+    public func signOut(completion: @escaping (Bool) -> Void) {
+        authRepository.removeAllTokens()
+        tokenExpirationDate = nil
+        completion(true)
+}
+    
+// MARK: - Private Methods
+
     private func cacheToken(result: AuthResponse) {
-        accessToken = result.accessToken
-        
+        authRepository.save(accessToken: result.accessToken)
+
         if let refreshToken = result.refreshToken {
-            self.refreshToken = refreshToken
+            authRepository.save(refreshToken: refreshToken)
         }
         
         tokenExpirationDate = Date().addingTimeInterval(TimeInterval(result.expiresIn))

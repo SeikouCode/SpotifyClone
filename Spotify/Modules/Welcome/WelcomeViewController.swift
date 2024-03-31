@@ -33,7 +33,6 @@ class WelcomeViewController: UIViewController {
     private func setupViews() {
         title = "Spotify"
         view.backgroundColor = .systemGreen
-        
         view.addSubview(signInButton)
         signInButton.snp.makeConstraints { make in
             make.height.equalTo(50)
@@ -54,11 +53,7 @@ class WelcomeViewController: UIViewController {
 
     private func handleSignIn(success: Bool) {
         guard success else {
-            let alert = UIAlertController(
-                title: "Oops",
-                message: "Something went wrong signing in",
-                preferredStyle: .alert
-            )
+            let alert = UIAlertController(title: "Oops", message: "Something went wrong signing in", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
             self.present(alert, animated: true, completion: nil)
             return

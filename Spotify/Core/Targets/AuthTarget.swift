@@ -10,21 +10,12 @@ import Moya
 
 enum AuthTarget {
     case getAccessToken(code: String)
-    case refreshToken(parameters: [String: Any])
+    case refreshToken(token: String)
 }
 
-extension AuthTarget: TargetType {
-    var baseURL: URL {
-        return URL(string: GlobalConstants.baseURL + "/api")!
-    }
-    
+extension AuthTarget: BaseTargetType {
     var path: String {
-        switch self {
-        case .getAccessToken:
-            return "/token"
-        case .refreshToken:
-            return "/token"
-        }
+            return "/api/token"
     }
     
     var method: Moya.Method {
@@ -42,9 +33,12 @@ extension AuthTarget: TargetType {
                 ],
                 encoding: URLEncoding.default
             )
-        case .refreshToken(let parameters):
+        case .refreshToken(let refreshToken):
             return .requestParameters(
-                parameters: parameters,
+                parameters: [
+                    "grant_type": "refresh_token",
+                    "refresh_token": refreshToken
+                ],
                 encoding: URLEncoding.default
             )
         }
