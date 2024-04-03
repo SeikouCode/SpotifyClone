@@ -5,7 +5,7 @@
 //  Created by Aneli  on 04.04.2024.
 //
 
-final class AlbumViewModel {
+class AlbumViewModel {
     
     private func getAlbumDetails(albumId: String, completion: @escaping (APIResult<AlbumDetails>) -> Void) {
         

@@ -34,6 +34,36 @@
             endingLineNumber = "91"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FA40D016-D2C7-4D3E-AFD8-6D4745166A57 - 757adf95cc66a21f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91">
+               </Location>
+               <Location
+                  uuid = "FA40D016-D2C7-4D3E-AFD8-6D4745166A57 - 9b4e364c4af3eba6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIView) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -82,6 +112,36 @@
             endingLineNumber = "108"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AF68AC47-F1C7-4DAD-8219-A34AF5D7A18E - 757adf95cc66a0c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108">
+               </Location>
+               <Location
+                  uuid = "AF68AC47-F1C7-4DAD-8219-A34AF5D7A18E - 2f1424e3c570988c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -98,6 +158,36 @@
             endingLineNumber = "114"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F79AE31-7C53-4269-985F-08F1BF865C91 - 757adf95cc66a116"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114">
+               </Location>
+               <Location
+                  uuid = "9F79AE31-7C53-4269-985F-08F1BF865C91 - 72f73efaaf0c6653"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -114,6 +204,36 @@
             endingLineNumber = "121"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "84EB088C-516D-42BB-BE84-B07C38AC2A6F - 757adf95cc66be7d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121">
+               </Location>
+               <Location
+                  uuid = "84EB088C-516D-42BB-BE84-B07C38AC2A6F - 96d658d1b1c72c79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -130,6 +250,36 @@
             endingLineNumber = "127"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C3DF60D9-BF86-4564-9288-C8A46685EC00 - 757adf95cc66bebb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127">
+               </Location>
+               <Location
+                  uuid = "C3DF60D9-BF86-4564-9288-C8A46685EC00 - bab172a89b929e02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #7 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -146,6 +296,36 @@
             endingLineNumber = "133"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C88719BC-39AD-4154-B052-D3269EF79E33 - 757adf95cc66bf81"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133">
+               </Location>
+               <Location
+                  uuid = "C88719BC-39AD-4154-B052-D3269EF79E33 - de908c87622e73cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #8 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -162,6 +342,36 @@
             endingLineNumber = "140"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E848C75C-EB33-4D9E-9839-EF556621822D - 757adf95cc66bce8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140">
+               </Location>
+               <Location
+                  uuid = "E848C75C-EB33-4D9E-9839-EF556621822D - e273a69e74f927e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #9 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -178,6 +388,36 @@
             endingLineNumber = "146"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1E77F1F5-21AD-4AA9-ADC5-23F459AE3A95 - 757adf95cc66bd36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146">
+               </Location>
+               <Location
+                  uuid = "1E77F1F5-21AD-4AA9-ADC5-23F459AE3A95 - c1440544a47aca64"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #10 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -194,6 +434,36 @@
             endingLineNumber = "152"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9E992263-33DA-40E6-8CF3-D627B06E8AEC - 757adf95cc66ba7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152">
+               </Location>
+               <Location
+                  uuid = "9E992263-33DA-40E6-8CF3-D627B06E8AEC - c25db2836e35b8af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #11 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -210,6 +480,36 @@
             endingLineNumber = "156"
             landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "59EE9506-EA15-43B0-9889-DE1E8DE9B797 - 757adf95cc66baf8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156">
+               </Location>
+               <Location
+                  uuid = "59EE9506-EA15-43B0-9889-DE1E8DE9B797 - c77562fa50c16b2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #12 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -225,6 +525,186 @@
             startingLineNumber = "160"
             endingLineNumber = "160"
             landmarkName = "setupViews()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0774FBDB-761A-44C2-8E3B-FB1EC60C9885 - 757adf95cc66bb04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160">
+               </Location>
+               <Location
+                  uuid = "0774FBDB-761A-44C2-8E3B-FB1EC60C9885 - c88d12311a9cc791"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #13 (SnapKit.ConstraintMaker) -&gt; () in Spotify.PlayerViewController.setupViews() -&gt; ()"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/Player/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5FCD0D9E-26DB-4AF4-97D0-63A4BC026A9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotify/Modules/AlbumDetails/ViewController/AlbumDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "setupViewModel()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9484843C-D21E-4AE6-AF5A-B5125AE54F79"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotify/Modules/AlbumDetails/ViewController/AlbumDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "setupViewModel()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE07EC5B-9010-4E88-908D-EC2288A6DEF7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotify/Modules/AlbumDetails/ViewController/AlbumDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "AlbumDetailsViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "AE07EC5B-9010-4E88-908D-EC2288A6DEF7 - 3fa274089ab381de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.AlbumDetailsViewController.viewModel.getter : Swift.Optional&lt;Spotify.AlbumViewModel&gt;"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/AlbumDetails/ViewController/AlbumDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "AE07EC5B-9010-4E88-908D-EC2288A6DEF7 - 9760ce191d35b85e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.AlbumDetailsViewController.viewModel.setter : Swift.Optional&lt;Spotify.AlbumViewModel&gt;"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/AlbumDetails/ViewController/AlbumDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "AE07EC5B-9010-4E88-908D-EC2288A6DEF7 - f2143878b2791a49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.AlbumDetailsViewController.viewModel.modify : Swift.Optional&lt;Spotify.AlbumViewModel&gt;"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/AlbumDetails/ViewController/AlbumDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "AE07EC5B-9010-4E88-908D-EC2288A6DEF7 - b05e2fa2640186f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.AlbumDetailsViewController.viewModel.modify : Swift.Optional&lt;Spotify.AlbumViewModel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "AE07EC5B-9010-4E88-908D-EC2288A6DEF7 - 1adf666c7cda48bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.AlbumDetailsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Spotify.AlbumDetailsViewController"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/AlbumDetails/ViewController/AlbumDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "AE07EC5B-9010-4E88-908D-EC2288A6DEF7 - 7076240dd170cf5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotify.AlbumDetailsViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Spotify.AlbumDetailsViewController&gt;"
+                  moduleName = "Spotify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhakenovaar/Documents/IOS-Spotify/Spotify/Modules/AlbumDetails/ViewController/AlbumDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "545C38A2-9C2C-4831-B17D-7D913ABD30F5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotify/Modules/AlbumDetails/ViewModel/AlbumViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "getAlbumDetails(albumId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

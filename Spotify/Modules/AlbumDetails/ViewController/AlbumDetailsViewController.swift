@@ -9,9 +9,12 @@ import UIKit
 
 class AlbumDetailsViewController: BaseViewController {
 
+    var viewModel: AlbumViewModel?
     var albumId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,6 +25,10 @@ class AlbumDetailsViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         baseSetupNavigationBar()
+    }
+    
+    private func setupViewModel() {
+        viewModel = AlbumViewModel()
     }
     
     private func setupGradient() {
@@ -42,6 +49,7 @@ class AlbumDetailsViewController: BaseViewController {
         self.view.layer.insertSublayer(gradient, at: 0)
     }
 }
+
 
 extension AlbumDetailsViewController {
     private func createCollectionLayout(section: Int) -> NSCollectionLayoutSection {
@@ -98,4 +106,3 @@ extension AlbumDetailsViewController {
         }
     }
 }
-
