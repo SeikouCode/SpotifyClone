@@ -167,6 +167,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 let album = dataModel[indexPath.row]
                 let viewController = AlbumDetailsViewController()
                 viewController.navigationItem.largeTitleDisplayMode = .never
+                viewController.hidesBottomBarWhenPushed = true
                 viewController.albumId = album.id
                 viewController.title = album.title
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -175,12 +176,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 let playlist = dataModel[indexPath.row]
                 let viewController = PlaylistDetailsViewController()
                 viewController.navigationItem.largeTitleDisplayMode = .never
+                viewController.hidesBottomBarWhenPushed = true
                 viewController.playlistId = playlist.id
                 viewController.title = playlist.title
                 self.navigationController?.pushViewController(viewController, animated: true)
                 
             case .recommended(_, let dataModel):
-                break
+                let playerViewController = PlayerViewController()
+                playerViewController.modalPresentationStyle = .overFullScreen
+                present(playerViewController, animated: true)
+                
         default:
                 break
         }

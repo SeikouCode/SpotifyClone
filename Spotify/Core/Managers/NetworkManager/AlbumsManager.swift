@@ -84,4 +84,22 @@ final class AlbumsManager {
             }
         }
     }
+    
+    func getAlbumDetail(albumsID: String, completion: @escaping (Result<AlbumDetails, Error>) -> Void) {
+        provider.request(.getAlbumDetails(albumId: albumsID)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let dataModel = try JSONDecoder().decode(AlbumDetails.self, from: response.data)
+                    completion(.success(dataModel))
+                } catch {
+                    print("Error decoding album details response:", error)
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to get album details:", error)
+                completion(.failure(error))
+            }
+        }
+    }
 }
