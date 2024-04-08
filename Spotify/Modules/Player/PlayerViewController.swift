@@ -10,6 +10,8 @@ import AVFoundation
 
 class PlayerViewController: UIViewController {
 
+    weak var dataSource: PlayerDataSource?
+
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "chevron.down"), for: .normal)

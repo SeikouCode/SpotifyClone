@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class AlbumDetailsViewController: BaseViewController {
 
@@ -29,6 +30,14 @@ class AlbumDetailsViewController: BaseViewController {
     
     private func setupViewModel() {
         viewModel = AlbumViewModel()
+        viewModel?.getAlbumDetails(albumId: albumId ?? "", completion: { result in
+            switch result {
+                case .success(let data):
+                    break
+                case .failure(let error):
+                    break
+            }
+        })
     }
     
     private func setupGradient() {

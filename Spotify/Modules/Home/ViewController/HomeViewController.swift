@@ -165,20 +165,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch type {
             case .newReleasedAlbums(_, let dataModel):
                 let album = dataModel[indexPath.row]
-                let viewController = AlbumDetailsViewController()
+                guard let albumId = album.id, let playlistTitle = album.title, let playlistImage = album.image else {
+                    print("Ошибка: некоторые данные плейлиста отсутствуют")
+                    return
+                }
+                let viewController = MediaDetailsViewController(playlist: AlbumsData(id: albumId, title: playlistTitle, image: playlistImage))
                 viewController.navigationItem.largeTitleDisplayMode = .never
                 viewController.hidesBottomBarWhenPushed = true
-                viewController.albumId = album.id
+//                viewController.albumId = album.id
                 viewController.title = album.title
                 self.navigationController?.pushViewController(viewController, animated: true)
                 
             case .featuredPlaylists(_, let dataModel):
                 let playlist = dataModel[indexPath.row]
-                let viewController = PlaylistDetailsViewController()
+                guard let playlistId = playlist.id, let playlistTitle = playlist.title, let playlistImage = playlist.image else {
+                    print("Ошибка: некоторые данные плейлиста отсутствуют")
+                    return
+                }
+                let viewController = MediaDetailsViewController(playlist: AlbumsData(id: playlistId, title: playlistTitle, image: playlistImage))
                 viewController.navigationItem.largeTitleDisplayMode = .never
                 viewController.hidesBottomBarWhenPushed = true
-                viewController.playlistId = playlist.id
-                viewController.title = playlist.title
+                viewController.title = playlistTitle
                 self.navigationController?.pushViewController(viewController, animated: true)
                 
             case .recommended(_, let dataModel):

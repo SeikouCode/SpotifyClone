@@ -7,7 +7,7 @@
 
 class AlbumViewModel {
     
-    private func getAlbumDetails(albumId: String, completion: @escaping (APIResult<AlbumDetails>) -> Void) {
+    func getAlbumDetails(albumId: String, completion: @escaping (APIResult<AlbumDetailsResponse>) -> Void) {
         
         AlbumsManager.shared.getAlbumDetail(albumsID: albumId) { result in
             switch result {
