@@ -8,10 +8,17 @@
 import UIKit
 import AVFoundation
 
+protocol PlayerViewControllerDelegate: AnyObject {
+    func didTapBackward()
+    func didTapForward()
+    func didTapPlayAndPause()
+}
+
 class PlayerViewController: UIViewController {
-
+    
+    weak var delegate: PlayerViewControllerDelegate?
     weak var dataSource: PlayerDataSource?
-
+    
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "chevron.down"), for: .normal)
@@ -41,7 +48,7 @@ class PlayerViewController: UIViewController {
     
     private let favoriteImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "heart")
+        imageView.image = UIImage(named: "icon_favofite")
         return imageView
     }()
     
@@ -56,24 +63,36 @@ class PlayerViewController: UIViewController {
         distribution: .equalSpacing
     )
     
-    private let backButton: UIButton = {
+    private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "backward.circle"), for: .normal)
+        button.setImage(UIImage(
+            systemName: "backward.circle",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 55, weight: .regular)),
+                        for: .normal)
         button.tintColor = .white
+        button.addTarget(self, action: #selector(didTapBackward), for: .touchUpInside)
         return button
     }()
     
-    private let forwardButton: UIButton = {
+    private lazy var forwardButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "forward.circle"), for: .normal)
+        button.setImage(UIImage(
+            systemName: "forward.circle",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 55, weight: .regular)),
+                        for: .normal)
         button.tintColor = .white
+        button.addTarget(self, action: #selector(didTapForward), for: .touchUpInside)
         return button
     }()
     
-    private let playPauseButton: UIButton = {
+    private lazy var playPauseButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        button.setImage(UIImage(
+            systemName: "pause.circle.fill",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 55, weight: .regular)),
+                        for: .normal)
         button.tintColor = .white
+        button.addTarget(self, action: #selector(didTapPlayAndPause), for: .touchUpInside)
         return button
     }()
     
@@ -82,9 +101,28 @@ class PlayerViewController: UIViewController {
         setupViews()
     }
     
+    private func configure() {
+        musicTitleLabel.text = dataSource?.songName
+    }
+    
     @objc
     private func didTapCloseButton() {
         dismiss(animated: true)
+    }
+    
+    @objc
+    private func didTapForward() {
+        delegate?.didTapForward()
+    }
+    
+    @objc
+    private func didTapBackward() {
+        delegate?.didTapBackward()
+    }
+    
+    @objc
+    private func didTapPlayAndPause() {
+        delegate?.didTapPlayAndPause()
     }
     
     private func setupViews() {
@@ -136,7 +174,7 @@ class PlayerViewController: UIViewController {
             make.right.equalToSuperview().inset(24)
             make.size.equalTo(24)
             make.centerY.equalTo(buttonStackView)
-
+            
         }
         
         musicSlider.snp.makeConstraints { make in
@@ -147,20 +185,20 @@ class PlayerViewController: UIViewController {
         
         buttonStackView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(12)
-//            make.height.equalTo(62)
             make.bottom.equalToSuperview().inset(70)
-        }
-        
-        backButton.snp.makeConstraints { make in
-            make.size.equalTo(56)
-        }
-        
-        forwardButton.snp.makeConstraints { make in
-            make.size.equalTo(56)
-        }
-        
-        playPauseButton.snp.makeConstraints { make in
-            make.size.equalTo(56)
+            //        }
+            //
+            //        backButton.snp.makeConstraints { make in
+            //            make.size.equalTo(56)
+            //        }
+            //
+            //        forwardButton.snp.makeConstraints { make in
+            //            make.size.equalTo(56)
+            //        }
+            //
+            //        playPauseButton.snp.makeConstraints { make in
+            //            make.size.equalTo(56)
+            //        }
         }
     }
 }

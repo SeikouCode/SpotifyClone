@@ -9,7 +9,7 @@ class AlbumViewModel {
     
     func getAlbumDetails(albumId: String, completion: @escaping (APIResult<AlbumDetailsResponse>) -> Void) {
         
-        AlbumsManager.shared.getAlbumDetail(albumsID: albumId) { result in
+        AlbumsManager.shared.getAlbumDetails(albumsID: albumId) { result in
             switch result {
             case .success(let albumDetails):
                 completion(.success(albumDetails))

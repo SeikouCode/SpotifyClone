@@ -11,6 +11,7 @@ import Kingfisher
 protocol PlaylistDetailHeaderViewDelegate: AnyObject {
     func didTapPlayAll(_ header: PlaylistCollectionReusableView)
     func didTapShare(_ header: PlaylistCollectionReusableView)
+    func didTapFavorite(_ header: PlaylistCollectionReusableView)
 }
 
 final class PlaylistCollectionReusableView: UICollectionReusableView {
@@ -26,7 +27,7 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
     }()
     
     private var titleLabel = LabelFactory.createLabel(
-        font: UIFont(name: "PlayfairDisplay-BoldItalic", size: 28),
+        font: UIFont(name: "PlayfairDisplay-BoldItalic", size: 18),
         numberOfLines: 2,
         isSkeletonable: true
     )
@@ -69,28 +70,21 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
         return stack
     }()
     
-    private var heartAction: UIButton = {
+    private lazy var heartAction: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "icon_favofite"), for: .normal)
         button.addTarget(self, action: #selector(heartButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    private var shareButton: UIButton = {
+    private lazy var shareButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "icon_share"), for: .normal)
         button.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    private var detailButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "icon_right"), for: .normal)
-        button.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
-    private var playButton: UIButton = {
+    private lazy var playButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "icon_play"), for: .normal)
         button.clipsToBounds = true
@@ -111,22 +105,22 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
     
     // MARK: -  Buttons action
     
-    @objc func playAllButtonTapped() {
+    @objc 
+    func playAllButtonTapped() {
         delegate?.didTapPlayAll(self)
         print("Play")
     }
     
-    @objc func heartButtonTapped() {
+    @objc 
+    func heartButtonTapped() {
+        delegate?.didTapFavorite(self)
         print("Like!")
     }
     
-    @objc func shareButtonTapped() {
+    @objc 
+    func shareButtonTapped() {
         delegate?.didTapShare(self)
         print("Share!")
-    }
-    
-    @objc func detailButtonTapped() {
-        print("Detail!")
     }
     
     private func setGradientBackground() {
@@ -158,11 +152,18 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
     private func setupViews() {
         isSkeletonable = true
         
-        [playlistImageView, titleLabel, subtitleLabel, spotifyImageView, spotifyLabel, timeLabel, buttonStackView, playButton].forEach {
+        [playlistImageView, 
+         titleLabel,
+         subtitleLabel,
+         spotifyImageView,
+         spotifyLabel,
+         timeLabel,
+         buttonStackView,
+         playButton].forEach {
             addSubview($0)
         }
         
-        [heartAction, shareButton, detailButton].forEach {
+        [heartAction, shareButton].forEach {
             buttonStackView.addArrangedSubview($0)
         }
         

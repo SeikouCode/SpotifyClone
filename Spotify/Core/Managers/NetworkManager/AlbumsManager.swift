@@ -85,7 +85,7 @@ final class AlbumsManager {
         }
     }
     
-    func getAlbumDetail(albumsID: String, completion: @escaping (Result<AlbumDetailsResponse, Error>) -> Void) {
+    func getAlbumDetails(albumsID: String, completion: @escaping (Result<AlbumDetailsResponse, Error>) -> Void) {
         provider.request(.getAlbumDetails(albumId: albumsID)) { result in
             switch result {
             case .success(let response):

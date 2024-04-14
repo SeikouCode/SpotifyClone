@@ -13,11 +13,12 @@ struct AlbumDetailsResponse: Decodable {
         let available_markets: [String]?
         let external_urls: [String: String]?
         let id: String?
+        let description: String?
         let images: [Image]?
         let label: String?
         let name: String?
         let tracks: TracksResponse
-      let popularity: Int?
+        let popularity: Int?
 }
 
 struct TracksResponse: Decodable {

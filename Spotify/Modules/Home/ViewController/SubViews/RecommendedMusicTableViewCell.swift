@@ -16,7 +16,7 @@ class RecommendedCollectionViewCell: UICollectionViewCell {
         static let musicImageSize: CGFloat = 48
         static let musicImageCornerRadius: CGFloat = 24
         static let textsStackViewSpacing: CGFloat = 2
-        static let rightViewSize: CGFloat = 24
+        static let rightViewSize: CGFloat = 30
     }
     
     // MARK: - UI Elements
@@ -111,7 +111,7 @@ class RecommendedCollectionViewCell: UICollectionViewCell {
         }
         
         rightView.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(12)
+            make.right.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
             make.size.equalTo(Constants.rightViewSize)
         }

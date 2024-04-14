@@ -12,9 +12,13 @@ class MediaDetailsViewController: BaseViewController {
     
     var isPlaylistDetails: Bool = false
     var playlist: AlbumsData
-    private var albumDetails: NewReleasesResponse?
+    private var albumDetails: AlbumDetailsResponse?
     private var playlistDetails: PlaylistDetailsResponse?
-    private var tracksData: [RecommendedMusicData] = []
+    private var tracksData: [RecommendedMusicData] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     private var tracks: [AudioTrack] = []
     
     private lazy var collectionView: UICollectionView = {
@@ -69,7 +73,6 @@ class MediaDetailsViewController: BaseViewController {
     }
     
     private func setupNavigationBar() {
-        title = playlist.title
         view.backgroundColor = .black
         
         view.addSubview(collectionView)
@@ -139,7 +142,6 @@ class MediaDetailsViewController: BaseViewController {
                         )
                     })
                     self?.playlistDetails = dataModel
-                    self?.collectionView.reloadData()
                     self?.collectionView.stopSkeletonAnimation()
                     self?.collectionView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
                     case .failure(_):
@@ -150,18 +152,18 @@ class MediaDetailsViewController: BaseViewController {
             AlbumViewModel().getAlbumDetails(albumId: id) { [weak self] result in
                 switch result {
                 case .success(let dataModel):
-                    self?.tracks = dataModel.tracks.items ?? []
-                    self?.tracksData = dataModel.tracks.items?.compactMap({ item in
-                        .init(
-                            title: item.name ?? "",
-                            subtitle: item.artists.first?.name ?? "",
-                            image: item.album?.images.first?.url ?? "",
-                            previewUrl: item.previewUrl ?? ""
-                        )
-                    }) ?? []
+                        self?.tracks = dataModel.tracks.items ?? []
+                        
+                        self?.tracksData = dataModel.tracks.items?.compactMap({ item in
+                            .init(
+                                title: item.name ?? "",
+                                subtitle: item.artists.first?.name ?? "",
+                                image: item.album?.images.first?.url ?? "",
+                                previewUrl: item.previewUrl ?? ""
+                            )
+                        }) ?? []
 
-//                    self?.albumDetails = dataModel
-                    self?.collectionView.reloadData()
+                    self?.albumDetails = dataModel
                     self?.collectionView.stopSkeletonAnimation()
                     self?.collectionView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
 
@@ -169,7 +171,6 @@ class MediaDetailsViewController: BaseViewController {
                     print("Failed to get album details:", error)
                 }
             }
-
         }
     }
 }
@@ -192,25 +193,47 @@ extension MediaDetailsViewController: UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PlaylistCollectionReusableView", for: indexPath) as! PlaylistCollectionReusableView
         
-        if let playlistDetails {
+        if let playlistDetails = playlistDetails {
             var sum = 0
-            for i in playlistDetails.tracks.items {
-                sum += i.track?.durationMs ?? 0
+            for item in playlistDetails.tracks.items {
+                if let track = item.track {
+                    sum += track.durationMs ?? 0
+                }
             }
-            //        let durationInSeconds = Double.durationFromMilliseconds(sum)
-            //        var convertDuration = durationInSeconds.formattedDuration(style: .abbreviated)
-            //        let songDuration = "\(playlistDetails.tracks.items.first?.track.popularity ?? 0) likes • \(convertDuration)"
+//                    let durationInSeconds = Double.durationFromMilliseconds(sum)
+//                    var convertDuration = durationInSeconds.formattedDuration(style: .abbreviated)
+//                    let songDuration = "\(playlistDetails.tracks.items.first?.track.popularity ?? 0) likes • \(convertDuration)"
             
             header.configure(
                 image: playlistDetails.images?.first?.url,
                 title: playlistDetails.name,
                 subtitle: playlistDetails.description,
-                songDuration: ""/*songDuration*/
+                songDuration: "" /*songDuration*/
             )
+        } else {
+            if let albumDetails = self.albumDetails {
+                if let items = albumDetails.tracks.items {
+                    var sum = 0
+                    for track in items {
+                        sum += track.durationMs ?? 0
+                    }
+                }
+                header.configure(
+                    image: albumDetails.images?.first?.url,
+                    title: albumDetails.name,
+                    subtitle: albumDetails.description,
+                    songDuration: ""
+                )
+            }
         }
         
         header.delegate = self
         return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let track = tracksData[indexPath.row]
+        PlayerPresenter.shared.startPlayer(from: self, track: track)
     }
 }
 
@@ -272,20 +295,32 @@ extension MediaDetailsViewController {
 
 // MARK: - PlaylistDetailHeaderViewDelegate
 extension MediaDetailsViewController: PlaylistDetailHeaderViewDelegate {
+    func didTapFavorite(_ header: PlaylistCollectionReusableView) {
+        print("favorite")
+    }
+    
     func didTapPlayAll(_ header: PlaylistCollectionReusableView) {
         print("playing all")
-        PlaybackPresenter.shared.startPlayback(from: self, playlist: tracks)
+        PlayerPresenter.shared.startPlayer(from: self, tracks: tracksData)
     }
     
     func didTapShare(_ header: PlaylistCollectionReusableView) {
-        guard let url = URL(string: playlistDetails?.external_urls?["spotify"] ?? "") else { return }
+        var url: URL?
+        
+        if let playlistURLString = playlistDetails?.external_urls?["spotify"] {
+            url = URL(string: playlistURLString)
+        } else if let albumURLString = albumDetails?.external_urls?["spotify"] {
+            url = URL(string: albumURLString)
+        }
+        
+        guard let finalURL = url else {
+            return
+        }
         
         let viewController = UIActivityViewController(
-            activityItems: ["Check out this cool plalist I found!", url],
+            activityItems: ["Check out this cool song I found!", finalURL],
             applicationActivities: []
         )
-        
         present(viewController, animated: true)
     }
 }
-
