@@ -203,10 +203,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             viewController.title = playlistTitle
             navigationController?.pushViewController(viewController, animated: true)
             
-        case .recommended(_, _):
-            let playerViewController = PlayerViewController()
-            playerViewController.modalPresentationStyle = .overFullScreen
-            present(playerViewController, animated: true)
+            case .recommended(_, let tracks):
+                let playerViewController = PlayerViewController(tracks: tracks)
+                playerViewController.modalPresentationStyle = .overFullScreen
+                present(playerViewController, animated: true)
             
         default:
             break

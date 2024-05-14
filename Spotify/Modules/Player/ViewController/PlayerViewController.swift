@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import Kingfisher
 
 protocol PlayerViewControllerDelegate: AnyObject {
     func didTapBackward()
@@ -19,6 +20,18 @@ class PlayerViewController: UIViewController {
     weak var delegate: PlayerViewControllerDelegate?
     weak var dataSource: PlayerDataSource?
     
+    private var tracks: [RecommendedMusicData] = []
+    private var currentTrackIndex: Int = 0
+    
+    init(tracks: [RecommendedMusicData]) {
+        self.tracks = tracks
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "chevron.down"), for: .normal)
@@ -28,7 +41,8 @@ class PlayerViewController: UIViewController {
     }()
     
     private let musicTitleLabel = LabelFactory.createLabel(
-        font: UIFont(name: "PlayfairDisplay-BoldItalic", size: 21)
+        font: UIFont(name: "PlayfairDisplay-BoldItalic", size: 14),
+        textAlignment: .center
     )
     
     private let musicTextStackView = StackFactory.createStackView(
@@ -60,51 +74,81 @@ class PlayerViewController: UIViewController {
     }()
     
     private let buttonStackView = StackFactory.createStackView(
-        distribution: .equalSpacing
+        spacing: 0,
+        distribution: .equalSpacing,
+        alignment: .center, 
+        axis: .horizontal
     )
     
-    private lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(
-            systemName: "backward.circle",
-            withConfiguration: UIImage.SymbolConfiguration(pointSize: 55, weight: .regular)),
-                        for: .normal)
+    private let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        let config = UIImage.SymbolConfiguration(pointSize: 20)
+        let image = UIImage(systemName: "backward.circle", withConfiguration: config)
+        
+        button.configuration = UIButton.Configuration.filled()
+        button.configuration?.baseBackgroundColor = .clear
+        button.configuration?.cornerStyle = .medium
+        button.configuration?.image = image
         button.tintColor = .white
-        button.addTarget(self, action: #selector(didTapBackward), for: .touchUpInside)
+        button.addTarget(PlayerViewController.self, action: #selector(didTapBackward), for: .touchUpInside)
         return button
     }()
     
-    private lazy var forwardButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(
-            systemName: "forward.circle",
-            withConfiguration: UIImage.SymbolConfiguration(pointSize: 55, weight: .regular)),
-                        for: .normal)
+    private let forwardButton: UIButton = {
+        let button = UIButton(type: .system)
+        let config = UIImage.SymbolConfiguration(pointSize: 20)
+        let image = UIImage(systemName: "forward.circle", withConfiguration: config)
+        
+        button.configuration = UIButton.Configuration.filled()
+        button.configuration?.baseBackgroundColor = .clear
+        button.configuration?.cornerStyle = .medium
+        button.configuration?.image = image
         button.tintColor = .white
-        button.addTarget(self, action: #selector(didTapForward), for: .touchUpInside)
+        button.addTarget(PlayerViewController.self, action: #selector(didTapForward), for: .touchUpInside)
         return button
     }()
-    
-    private lazy var playPauseButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(
-            systemName: "pause.circle.fill",
-            withConfiguration: UIImage.SymbolConfiguration(pointSize: 55, weight: .regular)),
-                        for: .normal)
+
+    var playPauseButton: UIButton = {
+        let button = UIButton(type: .system)
+        let config = UIImage.SymbolConfiguration(pointSize: 45)
+        let image = UIImage(systemName: "pause.circle.fill", withConfiguration: config)
+        button.configuration = UIButton.Configuration.filled()
+        button.configuration?.baseBackgroundColor = .clear
+        button.configuration?.cornerStyle = .medium
+        button.configuration?.image = image
         button.tintColor = .white
-        button.addTarget(self, action: #selector(didTapPlayAndPause), for: .touchUpInside)
+        button.addTarget(PlayerViewController.self, action: #selector(didTapPlayAndPause), for: .touchUpInside)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        configure()
     }
     
-    private func configure() {
-        musicTitleLabel.text = dataSource?.songName
+    func configure() {
+        guard tracks.indices.contains(currentTrackIndex) else { return }
+        
+        let track = tracks[currentTrackIndex]
+        musicTitleLabel.text = track.title
+        musicSubtitleLabel.text = track.subtitle
+        
+        if let imageUrlString = track.image,
+           let imageUrl = URL(string: imageUrlString) {
+            musicImageView.kf.setImage(with: imageUrl) { result in
+                switch result {
+                case .success(let value):
+                    print("Image downloaded successfully:", value.image)
+                case .failure(let error):
+                    print("Error downloading image:", error)
+                }
+            }
+        } else {
+            print("Image URL is nil or invalid")
+        }
     }
-    
+
     @objc
     private func didTapCloseButton() {
         dismiss(animated: true)
@@ -127,44 +171,44 @@ class PlayerViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .black
-        
+
         [musicTitleLabel, musicSubtitleLabel].forEach {
             musicTextStackView.addArrangedSubview($0)
         }
-        
+
         [backButton,
          playPauseButton,
          forwardButton].forEach {
             buttonStackView.addArrangedSubview($0)
         }
-        
+
         [closeButton,
+         musicTitleLabel,
          musicImageView,
+         musicTextStackView,
          favoriteImageView,
          musicSlider,
-         buttonStackView,
-         musicTextStackView
+         buttonStackView
         ].forEach {
             view.addSubview($0)
         }
         
         closeButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(12)
             make.left.equalToSuperview().inset(24)
             make.size.equalTo(24)
         }
         
         musicTitleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(closeButton)
-            make.centerX.equalToSuperview()
-            make.left.equalTo(closeButton.snp.right).offset(12)
-            make.right.equalToSuperview().inset(16)
+            make.left.equalTo(closeButton.snp.right).offset(14)
+            make.right.equalToSuperview().inset(24)
         }
         
         musicImageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
             make.height.equalTo(300)
             make.left.right.equalToSuperview().inset(36)
+            make.bottom.equalTo(musicTextStackView.snp.top).offset(-100)
         }
         
         musicTextStackView.snp.makeConstraints { make in
@@ -176,8 +220,7 @@ class PlayerViewController: UIViewController {
         favoriteImageView.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(24)
             make.size.equalTo(24)
-            make.centerY.equalTo(buttonStackView)
-            
+            make.centerY.equalTo(musicTextStackView)
         }
         
         musicSlider.snp.makeConstraints { make in
@@ -191,5 +234,4 @@ class PlayerViewController: UIViewController {
             make.bottom.equalToSuperview().inset(70)
         }
     }
-
 }

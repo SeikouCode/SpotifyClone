@@ -58,7 +58,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let track = tracks[indexPath.row]
         PlayerPresenter.shared.startPlayer(from: self, track:
-                .init(title: track.name ?? "", subtitle: track.album?.name, image: track.album?.images.first?.url ?? "", previewUrl: track.previewUrl)
+                .init(title: track.name ?? "", subtitle: track.album?.name, image: track.album?.images.first?.url ?? "", previewUrl: track.previewUrl, id: "")
         )
     }
 }

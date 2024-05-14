@@ -142,7 +142,7 @@ class HomeViewModel {
                     case .success(let tracks):
                         print("Received recommended tracks:", tracks)
                         let recommendedMusicData = tracks.map { track in
-                            return RecommendedMusicData(title: track.name ?? "", subtitle: track.artists?.first?.name ?? "", image: track.album?.images?.first?.url ?? "", previewUrl: "")
+                            return RecommendedMusicData(title: track.name ?? "", subtitle: track.artists?.first?.name ?? "", image: track.album?.images?.first?.url ?? "", previewUrl: "", id: "")
                         }
                         if let index = self?.sections.firstIndex(where: {
                             if case .recommended = $0 {

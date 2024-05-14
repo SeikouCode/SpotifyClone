@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import Kingfisher
 
 protocol PlayerDataSource: AnyObject {
     var songName: String? { get }
@@ -15,12 +16,28 @@ protocol PlayerDataSource: AnyObject {
 }
 
 final class PlayerPresenter: PlayerViewControllerDelegate {
+    
+    // MARK: - Properties
+    
+    static let shared = PlayerPresenter()
+    private var track: RecommendedMusicData?
+    private var tracks: [RecommendedMusicData] = []
+    private var currentTrackIndex: Int = 0
+    private var player: AVPlayer?
+    private var queuePlayer: AVQueuePlayer?
+    
+    // MARK: - PlayerViewControllerDelegate methods
+    
     func didTapBackward() {
-        
+        guard currentTrackIndex > 0 else { return }
+        currentTrackIndex -= 1
+        playCurrentTrack()
     }
     
     func didTapForward() {
-        
+        guard currentTrackIndex < tracks.count - 1 else { return }
+        currentTrackIndex += 1
+        playCurrentTrack()
     }
     
     func didTapPlayAndPause() {
@@ -41,20 +58,7 @@ final class PlayerPresenter: PlayerViewControllerDelegate {
         }
     }
     
-    static let shared = PlayerPresenter()
-    private var track: RecommendedMusicData?
-    private var tracks: [RecommendedMusicData] = []
-    private var player: AVPlayer?
-    private var queuePlayer: AVQueuePlayer?
-    
-    private var currentTrack: RecommendedMusicData? {
-        if let track, tracks.isEmpty {
-            return track
-        } else if !tracks.isEmpty {
-            return tracks.first
-        }
-        return nil
-    }
+    // MARK: - Methods for starting player
     
     func startPlayer(
         from viewController: UIViewController,
@@ -62,15 +66,18 @@ final class PlayerPresenter: PlayerViewControllerDelegate {
     ) {
         queuePlayer?.pause()
         guard let url = URL(string: track.previewUrl ?? "") else { return }
-        self.player = AVPlayer(url:  url)
+        self.player = AVPlayer(url: url)
         self.player?.volume = 0.5
         self.track = track
         self.tracks = []
-        let viewController = PlayerViewController()
-        viewController.delegate = self
-        viewController.dataSource = self
-        viewController.modalPresentationStyle = .overFullScreen
-        viewController.present(viewController, animated: true) { [weak self]  in
+        self.currentTrackIndex = 0
+        
+        let playerViewController = PlayerViewController(tracks: [track])
+        playerViewController.delegate = self
+        playerViewController.dataSource = self
+                
+        playerViewController.modalPresentationStyle = .overFullScreen
+        viewController.present(playerViewController, animated: true) { [weak self]  in
             self?.player?.play()
         }
     }
@@ -81,6 +88,20 @@ final class PlayerPresenter: PlayerViewControllerDelegate {
     ) {
         player?.pause()
         
+        self.tracks = tracks
+        self.currentTrackIndex = 0
+        
+        let playerViewController = PlayerViewController(tracks: tracks)
+        playerViewController.delegate = self
+        playerViewController.dataSource = self
+        
+        playerViewController.modalPresentationStyle = .overFullScreen
+        viewController.present(playerViewController, animated: true) { [weak self]  in
+            self?.startPlayback(tracks: tracks)
+        }
+    }
+
+    private func startPlayback(tracks: [RecommendedMusicData]) {
         let playerItems: [AVPlayerItem] = tracks.compactMap { track in
             guard let url = URL(string: track.previewUrl ?? "") else { return nil }
             return AVPlayerItem(url: url)
@@ -88,15 +109,17 @@ final class PlayerPresenter: PlayerViewControllerDelegate {
         
         queuePlayer = AVQueuePlayer(items: playerItems)
         queuePlayer?.volume = 0.1
-        self.track = nil
-        self.tracks = tracks
-        let playerViewController = PlayerViewController()
-        playerViewController.delegate = self
-        playerViewController.dataSource = self
-        playerViewController.modalPresentationStyle = .overFullScreen
-        viewController.present(playerViewController, animated: true) { [weak self]  in
-            self?.queuePlayer?.play()
-        }
+        queuePlayer?.play()
+    }
+    
+    private func playCurrentTrack() {
+        guard tracks.indices.contains(currentTrackIndex) else { return }
+        let track = tracks[currentTrackIndex]
+        guard let url = URL(string: track.previewUrl ?? "") else { return }
+        self.player = AVPlayer(url: url)
+        self.player?.play()
+        
+        NotificationCenter.default.post(name: .currentTrackChanged, object: nil)
     }
 }
 
@@ -112,4 +135,13 @@ extension PlayerPresenter: PlayerDataSource {
     var imageUrl: String? {
         return currentTrack?.image
     }
+    
+    private var currentTrack: RecommendedMusicData? {
+        guard tracks.indices.contains(currentTrackIndex) else { return nil }
+        return tracks[currentTrackIndex]
+    }
+}
+
+extension Notification.Name {
+    static let currentTrackChanged = Notification.Name("currentTrackChanged")
 }

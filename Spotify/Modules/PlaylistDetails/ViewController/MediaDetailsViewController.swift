@@ -138,7 +138,7 @@ class MediaDetailsViewController: BaseViewController {
                             title: item.track?.name ?? "",
                             subtitle: item.track?.artists.first?.name,
                             image: item.track?.album?.images.first?.url,
-                            previewUrl: item.track?.previewUrl
+                            previewUrl: item.track?.previewUrl, id: ""
                         )
                     })
                     self?.playlistDetails = dataModel
@@ -152,21 +152,22 @@ class MediaDetailsViewController: BaseViewController {
             AlbumViewModel().getAlbumDetails(albumId: id) { [weak self] result in
                 switch result {
                 case .success(let dataModel):
-                        self?.tracks = dataModel.tracks.items ?? []
-                        
-                        self?.tracksData = dataModel.tracks.items?.compactMap({ item in
-                            .init(
-                                title: item.name ?? "",
-                                subtitle: item.artists.first?.name ?? "",
-                                image: item.album?.images.first?.url ?? "",
-                                previewUrl: item.previewUrl ?? ""
-                            )
-                        }) ?? []
-
+                    self?.tracks = dataModel.tracks.items ?? []
+                    
+                    let trackItems = dataModel.tracks.items ?? []
+                    let tracksData = trackItems.compactMap { item -> RecommendedMusicData in
+                        let title = item.name ?? ""
+                        let subtitle = item.artists.first?.name ?? ""
+                        let image = item.album?.images.first?.url ?? ""
+                        let previewUrl = item.previewUrl ?? ""
+                        return RecommendedMusicData(title: title, subtitle: subtitle, image: image, previewUrl: previewUrl, id: "")
+                    }
+                    self?.tracksData = tracksData
+                    
                     self?.albumDetails = dataModel
                     self?.collectionView.stopSkeletonAnimation()
                     self?.collectionView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
-
+                    
                 case .failure(let error):
                     print("Failed to get album details:", error)
                 }
