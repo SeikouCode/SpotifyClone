@@ -118,7 +118,7 @@ class MediaDetailsViewController: BaseViewController {
             }
         } else {
             AlbumViewModel().getAlbumDetails(albumId: id) { [weak self] result in
-                self?.handleAlbumDetailsResult(result)
+                self?.handleAlbumDetailsResult(result.toResult())
             }
         }
     }
