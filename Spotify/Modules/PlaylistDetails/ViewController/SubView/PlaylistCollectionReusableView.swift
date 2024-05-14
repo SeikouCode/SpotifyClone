@@ -8,38 +8,46 @@
 import UIKit
 import Kingfisher
 
+// MARK: - Protocol for Playlist Detail Header View Actions
+
 protocol PlaylistDetailHeaderViewDelegate: AnyObject {
     func didTapPlayAll(_ header: PlaylistCollectionReusableView)
     func didTapShare(_ header: PlaylistCollectionReusableView)
     func didTapFavorite(_ header: PlaylistCollectionReusableView)
 }
 
+// MARK: - PlaylistCollectionReusableView
+
 final class PlaylistCollectionReusableView: UICollectionReusableView {
+    
+    // MARK: - Properties
     
     weak var delegate: PlaylistDetailHeaderViewDelegate?
     
-    private var playlistImageView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFill
-        image.isSkeletonable = true
-        image.skeletonCornerRadius = 8
-        return image
+    // MARK: - UI Elements
+    
+    private let playlistImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.isSkeletonable = true
+        imageView.skeletonCornerRadius = 8
+        return imageView
     }()
     
-    private var titleLabel = LabelFactory.createLabel(
-        font: UIFont.systemFont(ofSize: 18, weight: .bold),
+    private let titleLabel = LabelFactory.createLabel(
+        font: .systemFont(ofSize: 18, weight: .bold),
         numberOfLines: 2,
         isSkeletonable: true
     )
     
-    private var subtitleLabel = LabelFactory.createLabel(
-        font: UIFont.systemFont(ofSize: 13, weight: .bold),
+    private let subtitleLabel = LabelFactory.createLabel(
+        font: .systemFont(ofSize: 13, weight: .bold),
         textColor: .gray,
         numberOfLines: 2,
         isSkeletonable: true
     )
     
-    private var spotifyImageView: UIImageView = {
+    private let spotifyImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "icon_spotify")
         imageView.contentMode = .scaleAspectFill
@@ -49,19 +57,19 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
         return imageView
     }()
     
-    private lazy var spotifyLabel = LabelFactory.createLabel(
+    private let spotifyLabel = LabelFactory.createLabel(
         text: "Spotify",
-        font: UIFont.systemFont(ofSize: 13, weight: .regular),
+        font: .systemFont(ofSize: 13, weight: .regular),
         isSkeletonable: true
     )
     
-    private lazy var timeLabel = LabelFactory.createLabel(
-        font: UIFont.systemFont(ofSize: 13, weight: .regular),
+    private let timeLabel = LabelFactory.createLabel(
+        font: .systemFont(ofSize: 13, weight: .regular),
         textColor: .gray,
         isSkeletonable: true
     )
     
-    private var buttonStackView: UIStackView = {
+    private let buttonStackView: UIStackView = {
         let stack = UIStackView()
         stack.spacing = 24
         stack.axis = .horizontal
@@ -93,35 +101,36 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
         return button
     }()
     
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         setGradientBackground()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: -  Buttons action
+    // MARK: - Button Actions
     
-    @objc 
-    func playAllButtonTapped() {
+    @objc private func playAllButtonTapped() {
         delegate?.didTapPlayAll(self)
         print("Play")
     }
     
-    @objc 
-    func heartButtonTapped() {
+    @objc private func heartButtonTapped() {
         delegate?.didTapFavorite(self)
         print("Like!")
     }
     
-    @objc 
-    func shareButtonTapped() {
+    @objc private func shareButtonTapped() {
         delegate?.didTapShare(self)
         print("Share!")
     }
+    
+    // MARK: - Private Methods
     
     private func setGradientBackground() {
         let colorTop = UIColor(red: 0.0/255.0, green: 128.0/255.0, blue: 174.0/255.0, alpha: 1.0).cgColor
@@ -129,30 +138,17 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
                     
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.0 , 0.9]
+        gradientLayer.locations = [0.0, 0.9]
         gradientLayer.type = .axial
         gradientLayer.frame = self.bounds
         
-        self.layer.insertSublayer(gradientLayer, at:0)
-    }
-    
-    func configure(
-        image: String?,
-        title: String?,
-        subtitle: String?,
-        songDuration: String?
-    ) {
-        let imageUrl = URL(string: image ?? "")
-        playlistImageView.kf.setImage(with: imageUrl)
-        titleLabel.text = title
-        subtitleLabel.text = subtitle
-        timeLabel.text = songDuration
+        layer.insertSublayer(gradientLayer, at: 0)
     }
     
     private func setupViews() {
         isSkeletonable = true
         
-        [playlistImageView, 
+        [playlistImageView,
          titleLabel,
          subtitleLabel,
          spotifyImageView,
@@ -167,6 +163,10 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
             buttonStackView.addArrangedSubview($0)
         }
         
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         playlistImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.centerX.equalToSuperview()
@@ -213,5 +213,21 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
             make.top.equalTo(timeLabel.snp.bottom).offset(12)
             make.bottom.equalToSuperview().inset(4)
         }
+    }
+    
+    // MARK: - Configuration
+    
+    func configure(
+        image: String?,
+        title: String?,
+        subtitle: String?,
+        songDuration: String?
+    ) {
+        if let imageUrl = URL(string: image ?? "") {
+            playlistImageView.kf.setImage(with: imageUrl)
+        }
+        titleLabel.text = title
+        subtitleLabel.text = subtitle
+        timeLabel.text = songDuration
     }
 }

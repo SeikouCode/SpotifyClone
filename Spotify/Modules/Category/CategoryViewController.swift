@@ -7,10 +7,16 @@
 
 import UIKit
 
-class CategoryViewController: BaseViewController {
+// MARK: - CategoryViewController
 
+class CategoryViewController: BaseViewController {
+    
+    // MARK: - Properties
+    
     let category: Category
     private var playlists = [FeaturedPlaylists]()
+    
+    // MARK: - UI Elements
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewCompositionalLayout { _, _ -> NSCollectionLayoutSection in
@@ -34,6 +40,7 @@ class CategoryViewController: BaseViewController {
             
             return NSCollectionLayoutSection(group: group)
         }
+        
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(
             CustomCollectionViewCell.self,
@@ -42,8 +49,11 @@ class CategoryViewController: BaseViewController {
         collection.delegate = self
         collection.dataSource = self
         collection.showsVerticalScrollIndicator = false
+        collection.backgroundColor = .black
         return collection
     }()
+    
+    // MARK: - Initializers
     
     init(category: Category) {
         self.category = category
@@ -54,17 +64,30 @@ class CategoryViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        fetchCategoryPlaylists()
+    }
+    
+    // MARK: - Setup Methods
+    
+    private func setupView() {
         title = category.name
         navigationController?.navigationBar.barTintColor = .black
-
+        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.left.right.equalToSuperview()
         }
-        
+    }
+    
+    // MARK: - Network Call
+    
+    private func fetchCategoryPlaylists() {
         CategoryManager.shared.getCategoryPlaylist(category: category) { [weak self] result in
             switch result {
             case .success(let playlists):
@@ -77,42 +100,50 @@ class CategoryViewController: BaseViewController {
     }
 }
 
-extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - UICollectionViewDataSource
+
+extension CategoryViewController: UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        playlists.count
+        return playlists.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
         let playlist = playlists[indexPath.row]
         cell.configure(
             data: .init(
                 id: playlist.id,
-                title: playlist.images?.first?.url ?? "",
-                image: playlist.name
+                title: playlist.name,
+                image: playlist.images?.first?.url ?? ""
             )
         )
         cell.backgroundColor = .black
         return cell
     }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension CategoryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let playlist = playlists[indexPath.row]
         let viewController = MediaDetailsViewController(playlist:
-                .init(
-                    id: playlist.id,
-                    title: playlist.images?.first?.url ?? "",
-                    image: playlist.name
-                )
+            .init(
+                id: playlist.id,
+                title: playlist.name,
+                image: playlist.images?.first?.url ?? ""
+            )
         )
         viewController.title = playlist.name
-        viewController.navigationItem.titleView?.backgroundColor = .black
         viewController.navigationItem.largeTitleDisplayMode = .never
         viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)

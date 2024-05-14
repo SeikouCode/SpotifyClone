@@ -7,13 +7,21 @@
 
 import UIKit
 
+// MARK: - SearchResultsViewControllerDelegate Protocol
+
 protocol SearchResultsViewControllerDelegate {
     func showResult(_ controller: UIViewController)
 }
 
+// MARK: - SearchResultsViewController
+
 class SearchResultsViewController: BaseViewController {
 
+    // MARK: - Properties
+    
     private var tracks = [AudioTrack]()
+    
+    // MARK: - UI Elements
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -21,17 +29,27 @@ class SearchResultsViewController: BaseViewController {
         tableView.delegate = self
         tableView.isHidden = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = .black
         return tableView
     }()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTableView()
+    }
+    
+    // MARK: - Setup Methods
+    
+    private func setupTableView() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
+    
+    // MARK: - Update Method
     
     func update(with tracks: [AudioTrack]) {
         self.tracks = tracks
@@ -40,9 +58,12 @@ class SearchResultsViewController: BaseViewController {
     }
 }
 
-extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - UITableViewDataSource
+
+extension SearchResultsViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tracks.count
+        return tracks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,11 +75,16 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         cell.textLabel?.textColor = .white
         return cell
     }
+}
+
+// MARK: - UITableViewDelegate
+
+extension SearchResultsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let track = tracks[indexPath.row]
         PlayerPresenter.shared.startPlayer(from: self, track:
-                .init(title: track.name ?? "", subtitle: track.album?.name, image: track.album?.images.first?.url ?? "", previewUrl: track.previewUrl, id: "")
+            .init(title: track.name ?? "", subtitle: track.album?.name, image: track.album?.images.first?.url ?? "", previewUrl: track.previewUrl, id: "")
         )
     }
 }
