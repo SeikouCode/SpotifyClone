@@ -10,7 +10,7 @@ import SkeletonView
 
 class MediaDetailsViewController: BaseViewController {
 
-    // Properties
+// MARK: -  Properties
     
     var isPlaylistDetails: Bool = false
     var playlist: AlbumsData
@@ -23,7 +23,7 @@ class MediaDetailsViewController: BaseViewController {
     }
     private var tracks: [AudioTrack] = []
 
-    // Collection View Setup
+// MARK: -  Collection View Setup
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewCompositionalLayout { _, _ -> NSCollectionLayoutSection? in
@@ -44,7 +44,7 @@ class MediaDetailsViewController: BaseViewController {
         return collectionView
     }()
 
-    // Initializer
+// MARK: -  Initializer
     
     init(playlist: AlbumsData) {
         self.playlist = playlist
@@ -55,7 +55,7 @@ class MediaDetailsViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // Lifecycle Methods
+// MARK: -  Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +73,7 @@ class MediaDetailsViewController: BaseViewController {
         baseSetupNavigationBar()
     }
 
-    // Setup Methods
+// MARK: - Setup Methods
     
     private func setupNavigationBar() {
         view.backgroundColor = .black
