@@ -23,7 +23,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }()
     
     private var titleLabel = LabelFactory.createLabel(
-        font: UIFont(name: "PlayfairDisplay-Regular", size: 15),
+        font: UIFont.systemFont(ofSize: 15, weight: .regular),
         numberOfLines: 2,
         isSkeletonable: true
         )

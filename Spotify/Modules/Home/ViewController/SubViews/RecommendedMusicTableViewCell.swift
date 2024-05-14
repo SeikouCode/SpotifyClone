@@ -35,12 +35,12 @@ class RecommendedCollectionViewCell: UICollectionViewCell {
     )
     
     private var titleLabel = LabelFactory.createLabel(
-        font: UIFont(name: "Lato-Regular", size: 16),
+        font: UIFont.systemFont(ofSize: 16, weight: .regular),
         isSkeletonable: true
     )
     
     private var subtitleLabel = LabelFactory.createLabel(
-        font: UIFont(name: "Lato-Regular", size: 13),
+        font: UIFont.systemFont(ofSize: 13, weight: .regular),
         isSkeletonable: true
     )
     

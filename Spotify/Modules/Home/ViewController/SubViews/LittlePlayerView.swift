@@ -24,12 +24,12 @@ final class LittlePlayerView: UIView {
     
     private var musicTitleLabel = LabelFactory.createLabel(
         text: "Yellow",
-        font: UIFont(name: "Lato-BoldItalic", size: 13)
+        font: UIFont.systemFont(ofSize: 14, weight: .bold)
     )
     
     private var musicSubtitleLabel = LabelFactory.createLabel(
         text: "Coldplay",
-        font: UIFont(name: "Lato-Regular", size: 13)
+        font: UIFont.systemFont(ofSize: 13, weight: .regular)
     )
     
     private let favoriteImageView: UIImageView = {

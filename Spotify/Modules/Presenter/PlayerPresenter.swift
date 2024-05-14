@@ -9,11 +9,15 @@ import UIKit
 import AVFoundation
 import Kingfisher
 
+// MARK: - Protocols
+
 protocol PlayerDataSource: AnyObject {
     var songName: String? { get }
     var subtitle: String? { get }
     var imageUrl: String? { get }
 }
+
+// MARK: - PlayerPresenter
 
 final class PlayerPresenter: PlayerViewControllerDelegate {
     
@@ -101,6 +105,8 @@ final class PlayerPresenter: PlayerViewControllerDelegate {
         }
     }
 
+    // MARK: - Private Methods
+    
     private func startPlayback(tracks: [RecommendedMusicData]) {
         let playerItems: [AVPlayerItem] = tracks.compactMap { track in
             guard let url = URL(string: track.previewUrl ?? "") else { return nil }
@@ -123,6 +129,8 @@ final class PlayerPresenter: PlayerViewControllerDelegate {
     }
 }
 
+// MARK: - PlayerDataSource
+
 extension PlayerPresenter: PlayerDataSource {
     var songName: String? {
         return currentTrack?.title
@@ -141,6 +149,8 @@ extension PlayerPresenter: PlayerDataSource {
         return tracks[currentTrackIndex]
     }
 }
+
+// MARK: - Notification Name Extension
 
 extension Notification.Name {
     static let currentTrackChanged = Notification.Name("currentTrackChanged")

@@ -27,13 +27,13 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
     }()
     
     private var titleLabel = LabelFactory.createLabel(
-        font: UIFont(name: "PlayfairDisplay-BoldItalic", size: 18),
+        font: UIFont.systemFont(ofSize: 18, weight: .bold),
         numberOfLines: 2,
         isSkeletonable: true
     )
     
     private var subtitleLabel = LabelFactory.createLabel(
-        font: UIFont(name: "PlayfairDisplay-Regular", size: 13),
+        font: UIFont.systemFont(ofSize: 13, weight: .bold),
         textColor: .gray,
         numberOfLines: 2,
         isSkeletonable: true
@@ -51,12 +51,12 @@ final class PlaylistCollectionReusableView: UICollectionReusableView {
     
     private lazy var spotifyLabel = LabelFactory.createLabel(
         text: "Spotify",
-        font: UIFont(name: "PlayfairDisplay-Regular", size: 13),
+        font: UIFont.systemFont(ofSize: 13, weight: .regular),
         isSkeletonable: true
     )
     
     private lazy var timeLabel = LabelFactory.createLabel(
-        font: UIFont(name: "PlayfairDisplay-Regular", size: 13),
+        font: UIFont.systemFont(ofSize: 13, weight: .regular),
         textColor: .gray,
         isSkeletonable: true
     )

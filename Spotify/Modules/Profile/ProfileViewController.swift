@@ -22,23 +22,23 @@ class ProfileViewController: UIViewController {
     }()
     
     private var displayNameLabel = LabelFactory.createLabel(
-        font: UIFont(name: "Lato-Regular", size: 14)
+        font: UIFont.systemFont(ofSize: 14, weight: .regular)
     )
     
     private var idLabel = LabelFactory.createLabel(
-        font: UIFont(name: "Lato-Regular", size: 14)
+        font: UIFont.systemFont(ofSize: 14, weight: .regular)
     )
     
     private var emailLabel = LabelFactory.createLabel(
-        font: UIFont(name: "Lato-Regular", size: 14)
+        font: UIFont.systemFont(ofSize: 14, weight: .regular)
     )
     
     private var countryLabel = LabelFactory.createLabel(
-        font: UIFont(name: "Lato-Regular", size: 14)
+        font: UIFont.systemFont(ofSize: 14, weight: .regular)
     )
     
     private var productLabel = LabelFactory.createLabel(
-        font: UIFont(name: "Lato-Regular", size: 14)
+        font: UIFont.systemFont(ofSize: 14, weight: .regular)
     )
     
     private var scrollView = UIScrollView()
@@ -122,11 +122,11 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateUI(with profile: ProfileModel) {
-        displayNameLabel.text = NSLocalizedString("Full_name", comment: "") + ": \(profile.displayName ?? "")"
-        idLabel.text = NSLocalizedString("User_Id", comment: "") + ": \(profile.id ?? "")"
-        emailLabel.text = NSLocalizedString("Email_address", comment: "") + ": \(profile.email ?? "")"
-        countryLabel.text = NSLocalizedString("Country", comment: "") + ": \(profile.country ?? "")"
-        productLabel.text = NSLocalizedString("Product", comment: "") + ": \(profile.product ?? "")"
+        displayNameLabel.text = NSLocalizedString("Full_name".localized, comment: "") + ": \(profile.displayName ?? "")"
+        idLabel.text = NSLocalizedString("User_Id".localized, comment: "") + ": \(profile.id ?? "")"
+        emailLabel.text = NSLocalizedString("Email_address".localized, comment: "") + ": \(profile.email ?? "")"
+        countryLabel.text = NSLocalizedString("Country".localized, comment: "") + ": \(profile.country ?? "")"
+        productLabel.text = NSLocalizedString("Product".localized, comment: "") + ": \(profile.product ?? "")"
 
         if let imageURLString = profile.images.first?.url, let imageURL = URL(string: imageURLString) {
             profileImageView.kf.setImage(with: imageURL, placeholder: UIImage(named: "default_profile_image"))

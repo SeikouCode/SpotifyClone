@@ -13,7 +13,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     private var colors: [UIColor] = [.systemBlue, .systemMint, .systemYellow, .systemPink, .systemBrown, .systemGray, .systemIndigo]
     
     private var titleLabel = LabelFactory.createLabel(
-        font: UIFont(name: "PlayfairDisplay-BoldItalic", size: 22),
+        font: UIFont.systemFont(ofSize: 22, weight: .bold),
         isSkeletonable: true
     )
     
