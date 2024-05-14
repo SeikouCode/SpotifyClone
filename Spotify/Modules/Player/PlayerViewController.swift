@@ -141,7 +141,10 @@ class PlayerViewController: UIViewController {
         [closeButton,
          musicImageView,
          favoriteImageView,
-         musicSlider].forEach {
+         musicSlider,
+         buttonStackView,
+         musicTextStackView
+        ].forEach {
             view.addSubview($0)
         }
         
@@ -186,19 +189,7 @@ class PlayerViewController: UIViewController {
         buttonStackView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(12)
             make.bottom.equalToSuperview().inset(70)
-            //        }
-            //
-            //        backButton.snp.makeConstraints { make in
-            //            make.size.equalTo(56)
-            //        }
-            //
-            //        forwardButton.snp.makeConstraints { make in
-            //            make.size.equalTo(56)
-            //        }
-            //
-            //        playPauseButton.snp.makeConstraints { make in
-            //            make.size.equalTo(56)
-            //        }
         }
     }
+
 }
