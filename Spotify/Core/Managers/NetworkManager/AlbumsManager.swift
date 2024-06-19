@@ -18,7 +18,7 @@ final class AlbumsManager {
         ]
     )
     
-    func getNewReleases(completion: @escaping (APIResult<[Album]>) -> Void) {
+    func getNewReleases(completion: @escaping (APIResult<[NewReleasesAlbum]>) -> Void) {
         provider.request(.getNewReleases) { result in
             switch result {
             case .success(let response):
@@ -80,6 +80,42 @@ final class AlbumsManager {
                 }
             case .failure(let error):
                 print("Failed to get recommended genres:", error)
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getAlbumDetails(albumsID: String, completion: @escaping (Result<AlbumDetailsResponse, Error>) -> Void) {
+        provider.request(.getAlbumDetails(albumId: albumsID)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let dataModel = try JSONDecoder().decode(AlbumDetailsResponse.self, from: response.data)
+                    completion(.success(dataModel))
+                } catch {
+                    print("Error decoding album details response:", error)
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to get album details:", error)
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getPlaylistDetails(playlistID: String, completion: @escaping (Result<PlaylistDetailsResponse, Error>) -> Void) {
+        provider.request(.getPlaylistDetails(playlistID: playlistID)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let dataModel = try JSONDecoder().decode(PlaylistDetailsResponse.self, from: response.data)
+                    completion(.success(dataModel))
+                } catch {
+                    print("Error decoding playlist details response:", error)
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Failed to get playlist details:", error)
                 completion(.failure(error))
             }
         }

@@ -16,10 +16,10 @@ struct NewReleasesResponse: Decodable {
 // MARK: - AlbumsDataModel
 
 struct AlbumsDataModel: Decodable {
-    let items: [Album]
+    let items: [NewReleasesAlbum]
 }
 
-struct Album: Decodable {
+struct NewReleasesAlbum: Decodable {
     let id: String?
     let totalTracks: Int?
     let albumType: String?

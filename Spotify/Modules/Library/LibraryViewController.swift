@@ -7,10 +7,11 @@
 
 import UIKit
 
-class LibraryViewController: UIViewController {
+class LibraryViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemRed
+        view.backgroundColor = .black
+        navigationItem.title = "Library"
     }
 }

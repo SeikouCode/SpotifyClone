@@ -17,3 +17,14 @@ enum NetworkError {
     case unknown
     case failedWith(error: String)
 }
+
+extension APIResult {
+    func toResult() -> Result<T, Error> {
+        switch self {
+        case .success(let value):
+            return .success(value)
+        case .failure(let error):
+                return .failure(error as! Error)
+        }
+    }
+}

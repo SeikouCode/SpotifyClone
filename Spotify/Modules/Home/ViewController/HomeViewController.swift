@@ -34,6 +34,13 @@ class HomeViewController: BaseViewController {
         return collectionView
     }()
     
+    private var littlePlayerView: LittlePlayerView = {
+        let view = LittlePlayerView()
+        view.layer.cornerRadius = 4
+        view.isHidden = true
+        return view
+    }()
+    
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -55,11 +62,19 @@ class HomeViewController: BaseViewController {
         view.backgroundColor = .black
         navigationItem.setBackBarItem()
         title = "Home".localized
+        view.bringSubviewToFront(littlePlayerView)
         
-        view.addSubview(collectionView)
+        [collectionView, littlePlayerView].forEach {
+            view.addSubview($0)
+        }
         collectionView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.left.right.equalToSuperview()
+        }
+        littlePlayerView.snp.makeConstraints { make in
+            make.height.equalTo(56)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -160,29 +175,41 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let type = viewModel?.getSectionViewModel(at: indexPath.section) else { return }
         
-        let type = viewModel?.getSectionViewModel(at: indexPath.section)
         switch type {
-            case .newReleasedAlbums(_, let dataModel):
-                let album = dataModel[indexPath.row]
-                let viewController = AlbumDetailsViewController()
-                viewController.navigationItem.largeTitleDisplayMode = .never
-                viewController.albumId = album.id
-                viewController.title = album.title
-                self.navigationController?.pushViewController(viewController, animated: true)
-                
-            case .featuredPlaylists(_, let dataModel):
-                let playlist = dataModel[indexPath.row]
-                let viewController = PlaylistDetailsViewController()
-                viewController.navigationItem.largeTitleDisplayMode = .never
-                viewController.playlistId = playlist.id
-                viewController.title = playlist.title
-                self.navigationController?.pushViewController(viewController, animated: true)
-                
-            case .recommended(_, let dataModel):
-                break
+        case .newReleasedAlbums(_, let dataModel):
+            let album = dataModel[indexPath.row]
+            guard let albumId = album.id, let albumTitle = album.title, let albumImage = album.image else {
+                print("Ошибка: некоторые данные альбома отсутствуют")
+                return
+            }
+            let viewController = MediaDetailsViewController(playlist: AlbumsData(id: albumId, title: albumTitle, image: albumImage))
+            viewController.navigationItem.largeTitleDisplayMode = .never
+            viewController.hidesBottomBarWhenPushed = true
+            viewController.title = albumTitle
+            navigationController?.pushViewController(viewController, animated: true)
+            
+        case .featuredPlaylists(_, let dataModel):
+            let playlist = dataModel[indexPath.row]
+            guard let playlistId = playlist.id, let playlistTitle = playlist.title, let playlistImage = playlist.image else {
+                print("Ошибка: некоторые данные плейлиста отсутствуют")
+                return
+            }
+            let viewController = MediaDetailsViewController(playlist: AlbumsData(id: playlistId, title: playlistTitle, image: playlistImage))
+            viewController.navigationItem.largeTitleDisplayMode = .never
+            viewController.hidesBottomBarWhenPushed = true
+            viewController.isPlaylistDetails = true
+            viewController.title = playlistTitle
+            navigationController?.pushViewController(viewController, animated: true)
+            
+            case .recommended(_, let tracks):
+                let playerViewController = PlayerViewController(tracks: tracks)
+                playerViewController.modalPresentationStyle = .overFullScreen
+                present(playerViewController, animated: true)
+            
         default:
-                break
+            break
         }
     }
 }

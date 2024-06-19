@@ -10,7 +10,7 @@ import UIKit
 class HeaderView: UICollectionReusableView {
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "PlayfairDisplay-Regular", size: 15)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular);
         label.textColor = .white
         return label
     }()
