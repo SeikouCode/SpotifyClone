@@ -38,25 +38,25 @@ Technologies Used
 Screenshots
 
 <div style="display: flex; flex-wrap: wrap;">
-    <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
+    <div style="flex: 0 0 calc(14.2857% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Home.png" width="250" height="500" alt="Launch Screen">
     </div>
-    <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
+    <div style="flex: 0 0 calc(14.2857% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Playlist.png" width="250" height="500" alt="Main Screen">
     </div>
-    <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
+    <div style="flex: 0 0 calc(14.2857% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Player.png" width="250" height="500" alt="Details Screen">
     </div>
-    <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
+    <div style="flex: 0 0 calc(14.2857% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Settings.png" width="250" height="500" alt="Details Screen">
     </div>
-    <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
+    <div style="flex: 0 0 calc(14.2857% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Search.png" width="250" height="500" alt="Details Screen">
     </div>
-    <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
+    <div style="flex: 0 0 calc(14.2857% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Categories.png" width="250" height="500" alt="Details Screen">
     </div>
-    <div style="flex: 0 0 calc(33.33% - 10px);">
+    <div style="flex: 0 0 calc(14.2857% - 10px);">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Playlists.png" width="250" height="500" alt="Details Screen">
     </div>
 </div>
