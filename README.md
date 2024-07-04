@@ -47,6 +47,8 @@ Screenshots
     <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Player.png" width="250" height="500" alt="Details Screen">
     </div>
+</div>
+<div style="display: flex; flex-wrap: wrap;">
     <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Settings.png" width="250" height="500" alt="Details Screen">
     </div>
@@ -56,6 +58,8 @@ Screenshots
     <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Categories.png" width="250" height="500" alt="Details Screen">
     </div>
+</div>
+<div style="display: flex; flex-wrap: wrap;">
     <div style="flex: 0 0 calc(100% - 10px); margin-right: 10px;">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Playlists.png" width="250" height="500" alt="Details Screen">
     </div>
