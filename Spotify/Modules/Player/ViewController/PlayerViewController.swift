@@ -15,11 +15,12 @@ protocol PlayerViewControllerDelegate: AnyObject {
     func didTapBackward()
     func didTapForward()
     func didTapPlayAndPause()
+    func didTapFavorite()
 }
 
 // MARK: - PlayerViewController
 
-class PlayerViewController: UIViewController {
+class PlayerViewController: BaseViewController {
     
     // MARK: - Properties
     
@@ -45,7 +46,12 @@ class PlayerViewController: UIViewController {
     
     private lazy var closeButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "chevron.down"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 20)
+        let image = UIImage(systemName: "chevron.down", withConfiguration: config)
+        button.configuration = UIButton.Configuration.filled()
+        button.configuration?.baseBackgroundColor = .clear
+        button.configuration?.cornerStyle = .medium
+        button.configuration?.image = image
         button.tintColor = .white
         button.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
         return button
@@ -71,9 +77,13 @@ class PlayerViewController: UIViewController {
         font: UIFont.systemFont(ofSize: 13, weight: .regular)
     )
     
-    private let favoriteImageView: UIImageView = {
+    private lazy var favoriteImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "icon_favorite")
+        let config = UIImage.SymbolConfiguration(pointSize: 20)
+        imageView.image = UIImage(systemName: "heart", withConfiguration: config)
+        imageView.isUserInteractionEnabled = true
+        imageView.tintColor = .white
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapFavorite)))
         return imageView
     }()
     
@@ -180,6 +190,10 @@ class PlayerViewController: UIViewController {
     @objc
     private func didTapBackward() {
         delegate?.didTapBackward()
+    }
+    
+    @objc private func didTapFavorite() {
+        delegate?.didTapFavorite()
     }
     
     @objc

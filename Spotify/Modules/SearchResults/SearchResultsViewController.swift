@@ -28,15 +28,20 @@ class SearchResultsViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isHidden = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(SearchResultsTableViewCell.self, forCellReuseIdentifier: "SearchResultsTableViewCell")
         tableView.backgroundColor = .black
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = UIColor.black
+        tableView.separatorInset = UIEdgeInsets(top: 500, left: 16, bottom: 500, right: 16)
         return tableView
     }()
+
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .clear
         setupTableView()
     }
     
@@ -67,11 +72,18 @@ extension SearchResultsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultsTableViewCell", for: indexPath)
         let track = tracks[indexPath.row]
         cell.textLabel?.text = track.name
+        
+        if let imageUrlString = track.album?.images.first?.url,
+           let imageUrl = URL(string: imageUrlString) {
+            cell.imageView?.kf.setImage(with: imageUrl)
+        } else {
+            cell.imageView?.image = nil
+        }
         cell.backgroundColor = .black
-        cell.tintColor = .white
+        cell.tintColor = .black
         cell.textLabel?.textColor = .white
         return cell
     }
@@ -80,9 +92,19 @@ extension SearchResultsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension SearchResultsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let inset: CGFloat = 24.0
+        let customFrame = cell.frame.insetBy(dx: 0, dy: inset / 2)
+        cell.frame = customFrame
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let track = tracks[indexPath.row]
+        let track = tracks[indexPath.section]
         PlayerPresenter.shared.startPlayer(from: self, track:
             .init(title: track.name ?? "", subtitle: track.album?.name, image: track.album?.images.first?.url ?? "", previewUrl: track.previewUrl, id: "")
         )

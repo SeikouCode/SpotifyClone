@@ -24,13 +24,17 @@ final class PlayerPresenter: PlayerViewControllerDelegate {
     // MARK: - Properties
     
     static let shared = PlayerPresenter()
-    private var track: RecommendedMusicData?
-    private var tracks: [RecommendedMusicData] = []
+    var track: RecommendedMusicData?
+    var tracks: [RecommendedMusicData] = []
     private var currentTrackIndex: Int = 0
     private var player: AVPlayer?
     private var queuePlayer: AVQueuePlayer?
     
     // MARK: - PlayerViewControllerDelegate methods
+    
+    func didTapFavorite() {
+        
+    }
     
     func didTapBackward() {
         guard currentTrackIndex > 0 else { return }

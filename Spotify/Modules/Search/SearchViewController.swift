@@ -13,7 +13,12 @@ class SearchViewController: BaseViewController {
     
     // MARK: - Properties
     
-    private var categories: [Category] = []
+    var timer: Timer?
+    private var categories: [Category] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     // MARK: - UI Elements
     
@@ -23,12 +28,15 @@ class SearchViewController: BaseViewController {
         searchController.searchBar.placeholder = "What do you want to listen to?".localized
         searchController.searchBar.searchBarStyle = .minimal
         searchController.searchBar.tintColor = .white
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.searchBar.searchTextField.tintColor = .black
+        searchController.searchBar.searchTextField.textColor = .black
         searchController.definesPresentationContext = true
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         return searchController
     }()
-    
+
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewCompositionalLayout { _, _ -> NSCollectionLayoutSection in
             let item = NSCollectionLayoutItem(
@@ -43,7 +51,7 @@ class SearchViewController: BaseViewController {
             let group = NSCollectionLayoutGroup.horizontal(
                 layoutSize: .init(
                     widthDimension: .fractionalWidth(1),
-                    heightDimension: .absolute(150)),
+                    heightDimension: .absolute(100)),
                 subitem: item,
                 count: 2
             )
@@ -78,7 +86,7 @@ class SearchViewController: BaseViewController {
         title = "Search".localized
         navigationController?.navigationBar.barTintColor = .black
         navigationItem.searchController = searchViewController
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = .black
     }
     
     private func setupCollectionView() {
@@ -116,14 +124,17 @@ extension SearchViewController: UISearchResultsUpdating {
             return
         }
         
-        SearchManager.shared.search(query: text) { result in
-            switch result {
-            case .success(let tracks):
-                resultsViewController.update(with: tracks)
-            case .failure:
-                break
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { _ in
+            SearchManager.shared.search(query: text) { result in
+                switch result {
+                    case .success(let tracks):
+                        resultsViewController.update(with: tracks)
+                    case .failure:
+                        break
+                }
             }
-        }
+        })
     }
 }
 
