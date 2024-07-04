@@ -36,7 +36,6 @@ Technologies Used
 
 ---
 Screenshots
-Home
 
 <div style="display: flex; flex-wrap: wrap;">
     <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
@@ -47,10 +46,7 @@ Home
     </div>
     <div style="flex: 0 0 calc(33.33% - 10px);">
         <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Player.png" width="250" height="500" alt="Details Screen">
-    </div>
-
-
-Search   
+    </div> 
 </div>
 <div style="display: flex; flex-wrap: wrap;">
     <div style="flex: 0 0 calc(33.33% - 10px); margin-right: 10px;">
