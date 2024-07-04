@@ -37,7 +37,6 @@ Technologies Used
 ---
 Screenshots
 
-https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Home.png
   <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Home.png" width="250" height="500" alt="Launch Screen">
   <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Playlist.png" width="250" height="500" alt="Main Screen">
   <img src="https://github.com/SeikouCode/SpotifyClone/blob/main/Images/Player.png" width="250" height="500" alt="Details Screen">
